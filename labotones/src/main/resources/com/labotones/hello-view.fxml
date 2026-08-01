@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox spacing="12"
+      stylesheets="@styles.css"
+      styleClass="contenedor"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.labotones.Controller"
+      alignment="TOP_CENTER">
+
+    <VBox spacing="8">
+        <!-- Barra superior con buscador y tema -->
+        <HBox spacing="10" alignment="CENTER_LEFT" style="-fx-padding: 5 0 5 0;">
+            <TextField fx:id="castexto2"
+                       promptText="Escribe el nombre del equipo..."
+                       prefWidth="250"
+                  />
+
+            <Label fx:id="pingIndicator"
+                   text="⬤"
+                   style="-fx-text-fill: #888888; -fx-font-size: 16px;"
+                   visible="false"
+                   minWidth="40"/>
+
+            <Button fx:id="btnTheme"
+                    styleClass="btn-theme-small"
+                    text="◐"
+                    onAction="#cambiarTema"
+                    style="-fx-font-size: 13px; -fx-padding: 2 8 2 8;">
+                <tooltip>
+                    <Tooltip text="Cambiar tema claro/oscuro"/>
+                </tooltip>
+            </Button>
+
+            <Region HBox.hgrow="ALWAYS"/>
+
+            <HBox minHeight="40" prefHeight="40" alignment="CENTER_LEFT">
+                <FlowPane fx:id="historialPane"
+                          hgap="5"
+                          vgap="5"
+                          minHeight="30"
+                          style="-fx-background-color: transparent; -fx-padding: 2px;"/>
+            </HBox>
+        </HBox>
+
+        <!-- Panel de botones principal -->
+        <HBox spacing="0" 
+              alignment="CENTER" 
+              maxWidth="Infinity" 
+              styleClass="button-container"
+              style="-fx-padding: 5 0 5 0;">
+            <padding>
+                <Insets top="10" right="15" bottom="10" left="15"/>
+            </padding>
+            <Button text="Conectar" onAction="#conectar" styleClass="btn-conectar" HBox.hgrow="ALWAYS" style="-fx-font-size: 12px;"/>
+            <Region style="-fx-min-width: 12px; -fx-pref-width: 12px; -fx-max-width: 12px;"/>
+            <Button text="Logs" onAction="#abrirLogs" styleClass="btn-logs" HBox.hgrow="ALWAYS" style="-fx-font-size: 12px;"/>
+            <Region style="-fx-min-width: 12px; -fx-pref-width: 12px; -fx-max-width: 12px;"/>
+            <Button text="Botones" onAction="#abrirCRUD" styleClass="btn-logs" HBox.hgrow="ALWAYS" style="-fx-font-size: 12px;"/>
+            <Region style="-fx-min-width: 12px; -fx-pref-width: 12px; -fx-max-width: 12px;"/>
+            <Button text="Mini" onAction="#abrirMini" styleClass="btn-logs" HBox.hgrow="ALWAYS" style="-fx-font-size: 12px;"/>
+            <Region style="-fx-min-width: 12px; -fx-pref-width: 12px; -fx-max-width: 12px;"/>
+            <Button text="Cerrar Minis" onAction="#cerrarTodasLasMinis" styleClass="btn-cerrar" HBox.hgrow="ALWAYS" style="-fx-font-size: 12px;"/>
+            <Region style="-fx-min-width: 12px; -fx-pref-width: 12px; -fx-max-width: 12px;"/>
+            <Button fx:id="btnBloqueo" 
+                    text="🔓" 
+                    onAction="#toggleBloqueoConPassword" 
+                    styleClass="btn-bloqueo-barra" 
+                    HBox.hgrow="ALWAYS"
+                    style="-fx-font-size: 14px; -fx-padding: 2 8 2 8;">
+                <tooltip>
+                    <Tooltip text="Bloquear/Desbloquear botones (requiere contraseña)"/>
+                </tooltip>
+            </Button>
+        </HBox>
+    </VBox>
+
+    <!-- Buscador y filtro de categorías - MÁS FINOS Y COMPACTOS -->
+    <HBox spacing="8" alignment="CENTER_LEFT" style="-fx-padding: 2 0 4 0;">
+        <TextField fx:id="campoBuscarBotones"
+                   promptText="🔍 Buscar botón..."
+                   prefWidth="300"
+                   style="-fx-font-size: 11px; -fx-padding: 3 8 3 8; -fx-pref-height: 40px;"/>
+        <ComboBox fx:id="comboCategoria" 
+                  prefWidth="150"
+                  style="-fx-font-size: 11px; -fx-padding: 0 4 0 4; -fx-pref-height: 40px;"/>
+        <Label text="Filtrar por categoría" style="-fx-font-size: 10px; -fx-text-fill: #888888;"/>
+    </HBox>
+
+    <!-- Grid de botones -->
+    <ScrollPane fitToWidth="true"
+                hbarPolicy="NEVER"
+                vbarPolicy="AS_NEEDED"
+                VBox.vgrow="ALWAYS"
+                prefHeight="350"
+                style="-fx-background-color: transparent; -fx-background: transparent; -fx-padding: 0;">
+        <content>
+            <GridPane fx:id="contenedorBotones"
+                      hgap="20"
+                      vgap="20"
+                      alignment="TOP_CENTER"
+                      style="-fx-padding: 15 20 15 20;"/>
+        </content>
+    </ScrollPane>
+
+    <!-- Área de logs -->
+    <VBox fx:id="logArea"
+          spacing="3"
+          minHeight="80"
+          prefHeight="150"
+          styleClass="log-box"
+          VBox.vgrow="NEVER"
+          style="-fx-padding: 4 8 4 8; -fx-font-size: 11px;"/>
+
+    <!-- Footer -->
+    <HBox styleClass="dev-signature-footer"
+          alignment="CENTER"
+          spacing="8"
+          style="-fx-padding: 4 0 2 0;">
+        <Separator HBox.hgrow="ALWAYS"/>
+        <HBox spacing="4" alignment="CENTER">
+            <Label styleClass="dev-text" text="Jesus Carrasquilla &amp; Óscar Romero" style="-fx-font-size: 10px;"/>
+            <Label styleClass="dev-license" text="| MIT License" style="-fx-font-size: 10px;"/>
+        </HBox>
+        <Separator HBox.hgrow="ALWAYS"/>
+    </HBox>
+
+</VBox>

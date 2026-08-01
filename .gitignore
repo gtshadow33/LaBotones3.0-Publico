@@ -1,0 +1,14 @@
+· GITIGNORE
+/labotones/dist
+/labotones/target
+/labotones/bats/*.bat
+ 
+# Datos reales de producción (UCA / El Prat) - no deben ir en el repo público
+/labotones/config.properties
+/labotones/historial.json
+/labotones/logs.txt
+/labotones/botones.json
+ 
+# Password del repositorio compartido
+repo.password
+ 

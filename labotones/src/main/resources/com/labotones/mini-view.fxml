@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox spacing="0" 
+      stylesheets="@styles.css" 
+      styleClass="mini-ventana"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.labotones.MiniController"
+      alignment="TOP_CENTER"
+      prefWidth="380"
+      prefHeight="500">
+
+ 
+
+
+    <!-- ScrollPane con GridPane de botones -->
+    <ScrollPane fitToWidth="true" 
+                hbarPolicy="NEVER" 
+                vbarPolicy="AS_NEEDED"
+                VBox.vgrow="ALWAYS"
+                style="-fx-background: transparent; -fx-background-color: transparent;">
+        <GridPane fx:id="contenedorBotonesMini"
+                  styleClass="grid-mini"
+                  hgap="10" 
+                  vgap="10"
+                  alignment="TOP_CENTER"
+                  gridLinesVisible="false"/>
+    </ScrollPane>
+
+    <!-- Barra inferior -->
+    <HBox spacing="8" alignment="CENTER" styleClass="barra-inferior" minHeight="32">
+        <Label fx:id="lblInfo" text="🔄 Botones cargados" styleClass="lbl-info"/>
+        <Pane HBox.hgrow="ALWAYS"/>
+        <Button text="⟳" onAction="#recargar" styleClass="btn-control">
+            <tooltip><Tooltip text="Recargar botones"/></tooltip>
+        </Button>
+    </HBox>
+</VBox>

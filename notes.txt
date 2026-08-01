@@ -1,0 +1,30 @@
+mvn  javafx:run 
+mvn clean package
+//linux
+jpackage \
+  --type app-image \
+  --name LaBotones \
+  --input target \
+  --main-jar labotones-1.0-SNAPSHOT.jar \
+  --main-class com.labotones.App \
+  --dest dist \
+  --module-path /usr/share/openjfx/lib \
+  --add-modules javafx.controls,javafx.fxml
+
+//windows
+jpackage ^
+  --type app-image ^
+  --name LaBotones ^
+  --input target ^
+  --main-jar labotones-1.0-SNAPSHOT.jar ^
+  --main-class com.labotones.App ^
+  --dest dist ^
+  --module-path "C:\javafx\lib" ^
+  --add-modules javafx.controls,javafx.fxml ^
+  --icon src\main\resources\icons\labotones.ico
+
+-- Alpha con consola
+ mvn clean package; if ($?) { jlink --module-path "$env:JAVA_HOME\jmods;C:\javafx-jmods-21" --add-modules java.base,java.desktop,java.logging,java.sql,java.xml,java.net.http,javafx.controls,javafx.fxml --output runtime }; if ($?) { jpackage --type app-image --name LaBotones --input target --main-jar labotones-1.0-SNAPSHOT.jar --main-class com.labotones.App --runtime-image runtime --dest dist --win-console }
+
+-- Beta sin consola (optimimizado)
+mvn clean package; if ($?) { jlink --module-path "$env:JAVA_HOME\jmods;C:\javafx-jmods-21" --add-modules java.base,java.desktop,java.logging,java.net.http,java.xml,javafx.controls,javafx.fxml --strip-debug --compress=2 --no-header-files --no-man-pages --strip-native-commands --output runtime }; if ($?) { jpackage --type app-image --name LaBotones --input target --main-jar labotones-1.0-SNAPSHOT.jar --main-class com.labotones.App --runtime-image runtime --dest dist }

@@ -1,0 +1,3072 @@
+/* ========================================
+   TEMA EMPRESARIAL - LIGHT BLUE MODERN
+   Optimizado para rendimiento y claridad
+   (v2: sin propiedades no soportadas por JavaFX,
+   sin bloques duplicados, bug de .btn-danger:pressed corregido,
+   eliminados efectos neón en todos los temas)
+   ======================================== */
+
+/* ===== VARIABLES GLOBALES ===== */
+.root {
+    /* Colores base - AZUL CLARO */
+    -fx-primary: #0d6efd;
+    -fx-primary-dark: #0b5ed7;
+    -fx-primary-light: #6ea8fe;
+    -fx-secondary: #0dcaf0;
+    -fx-secondary-dark: #0aa2c0;
+
+    /* Fondos - CLAROS */
+    -fx-bg-base: #ffffff;
+    -fx-bg-surface: #ffffff;
+    -fx-bg-elevated: #e9ecef;
+    -fx-bg-hover: #dee2e6;
+
+    /* Bordes */
+    -fx-border-subtle: #ced4da;
+    -fx-border-medium: #adb5bd;
+    -fx-border-accent: #0d6efd;
+
+    /* Textos */
+    -fx-text-primary: #212529;
+    -fx-text-secondary: #495057;
+    -fx-text-muted: #6c757d;
+
+    /* Estados */
+    -fx-success: #10b981;
+    -fx-warning: #f59e0b;
+    -fx-error: #ef4444;
+    -fx-info: #0d6efd;
+
+    /* Sombras optimizadas (reutilizadas en todo el archivo) */
+    -fx-shadow-sm: dropshadow(gaussian, rgba(0,0,0,0.08), 4, 0, 0, 1);
+    -fx-shadow-md: dropshadow(gaussian, rgba(0,0,0,0.12), 8, 0, 0, 2);
+    -fx-shadow-glow: dropshadow(gaussian, #0d6efd, 8, 0, 0, 0);
+    -fx-shadow-btn-hover: dropshadow(gaussian, rgba(13,110,253,0.3), 8, 0, 0, 2);
+
+    /* Tipografía */
+    -fx-font-family: 'Inter', 'Segoe UI', -apple-system, system-ui, sans-serif;
+    -fx-font-size: 13px;
+}
+
+/* ===== FONDO PRINCIPAL ===== */
+.contenedor {
+    -fx-background-color: -fx-bg-base;
+    -fx-padding: 20;
+}
+
+/* ===== CAMPOS DE ENTRADA GENÉRICOS ===== */
+.text-field, .text-area, .combo-box, #historialCombo, #searchField {
+    -fx-background-color: -fx-bg-surface;
+    -fx-text-fill: -fx-text-primary;
+    -fx-prompt-text-fill: -fx-text-muted;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-border-color: -fx-border-subtle;
+    -fx-border-width: 1;
+    -fx-padding: 10 14;
+    -fx-font-size: 13px;
+}
+
+.text-field:focused, .text-area:focused, .combo-box:focused,
+#historialCombo:focused, #searchField:focused {
+    -fx-border-color: -fx-primary;
+    -fx-border-width: 2;
+    -fx-background-color: -fx-bg-surface;
+    -fx-effect: -fx-shadow-sm;
+}
+
+.text-field:error {
+    -fx-border-color: -fx-error;
+}
+
+/* ===== TEXT AREA ===== */
+.text-area .content {
+    -fx-background-color: -fx-bg-surface;
+    -fx-text-fill: -fx-text-primary;
+}
+
+/* ===== SCROLLBARS ===== */
+.text-area .scroll-bar:vertical,
+.scroll-pane .scroll-bar:vertical,
+.mini-ventana .scroll-bar {
+    -fx-background-color: transparent;
+    -fx-pref-width: 6;
+}
+
+.text-area .scroll-bar:vertical .thumb,
+.scroll-pane .scroll-bar:vertical .thumb,
+.mini-ventana .scroll-bar .thumb {
+    -fx-background-color: -fx-border-medium;
+    -fx-background-radius: 3;
+}
+
+.text-area .scroll-bar:vertical .thumb:hover,
+.scroll-pane .scroll-bar:vertical .thumb:hover,
+.mini-ventana .scroll-bar .thumb:hover {
+    -fx-background-color: -fx-primary;
+}
+
+/* ===== COMBOBOX ===== */
+.combo-box .list-cell, #historialCombo .list-cell {
+    -fx-background-color: -fx-bg-surface;
+    -fx-text-fill: -fx-text-primary;
+    -fx-padding: 8 12;
+}
+
+.combo-box .arrow-button, #historialCombo .arrow-button {
+    -fx-background-color: transparent;
+}
+
+.combo-box .arrow, #historialCombo .arrow {
+    -fx-background-color: -fx-text-muted;
+}
+
+.combo-box-popup .list-view, #historialCombo-popup .list-view {
+    -fx-background-color: -fx-bg-surface;
+    -fx-border-color: -fx-primary;
+    -fx-border-radius: 8;
+    -fx-effect: -fx-shadow-md;
+}
+
+.combo-box-popup .list-cell:hover, #historialCombo-popup .list-cell:hover {
+    -fx-background-color: -fx-primary;
+    -fx-text-fill: white;
+}
+
+/* ===== DATE PICKER (selector de fecha, ej. exportar logs) ===== */
+.date-picker {
+    -fx-background-color: -fx-bg-surface;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-border-color: -fx-border-subtle;
+    -fx-border-width: 1;
+}
+
+.date-picker:focused {
+    -fx-border-color: -fx-primary;
+    -fx-border-width: 2;
+    -fx-effect: -fx-shadow-sm;
+}
+
+.date-picker .text-field {
+    -fx-background-color: -fx-bg-surface;
+    -fx-text-fill: -fx-text-primary;
+    -fx-prompt-text-fill: -fx-text-muted;
+    -fx-background-radius: 8 0 0 8;
+    -fx-border-width: 0;
+    -fx-padding: 8 10;
+}
+
+.date-picker .arrow-button {
+    -fx-background-color: -fx-bg-surface;
+    -fx-background-radius: 0 8 8 0;
+    -fx-padding: 0 10;
+}
+
+.date-picker .arrow-button .arrow {
+    -fx-background-color: -fx-text-muted;
+}
+
+.date-picker .arrow-button:hover {
+    -fx-background-color: -fx-bg-hover;
+}
+
+.date-picker .arrow-button:hover .arrow {
+    -fx-background-color: -fx-primary;
+}
+
+/* Popup del calendario */
+.date-picker-popup {
+    -fx-background-color: -fx-bg-surface;
+    -fx-border-color: -fx-primary;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-effect: -fx-shadow-md;
+}
+
+.date-picker-popup > .month-year-pane {
+    -fx-background-color: -fx-bg-elevated;
+    -fx-background-radius: 8 8 0 0;
+    -fx-padding: 8;
+}
+
+.date-picker-popup > .month-year-pane .label {
+    -fx-text-fill: -fx-text-primary;
+    -fx-font-weight: 600;
+}
+
+.date-picker-popup .spinner .button,
+.date-picker-popup .spinner .button:hover {
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+}
+
+.date-picker-popup .spinner .button > .left-arrow,
+.date-picker-popup .spinner .button > .right-arrow {
+    -fx-background-color: -fx-text-secondary;
+}
+
+.date-picker-popup .spinner .button:hover > .left-arrow,
+.date-picker-popup .spinner .button:hover > .right-arrow {
+    -fx-background-color: -fx-primary;
+}
+
+.date-picker-popup .day-name-cell {
+    -fx-text-fill: -fx-text-muted;
+    -fx-font-size: 10px;
+    -fx-font-weight: 600;
+}
+
+.date-picker-popup .day-cell {
+    -fx-background-color: -fx-bg-surface;
+    -fx-text-fill: -fx-text-primary;
+    -fx-border-color: transparent;
+}
+
+.date-picker-popup .day-cell:hover {
+    -fx-background-color: -fx-bg-hover;
+    -fx-text-fill: -fx-primary;
+}
+
+.date-picker-popup .day-cell.previous-month,
+.date-picker-popup .day-cell.next-month {
+    -fx-text-fill: -fx-text-muted;
+    -fx-opacity: 0.5;
+}
+
+.date-picker-popup .today {
+    -fx-border-color: -fx-primary;
+    -fx-border-width: 1;
+    -fx-background-radius: 4;
+    -fx-border-radius: 4;
+}
+
+.date-picker-popup .selected {
+    -fx-background-color: -fx-primary;
+    -fx-text-fill: white;
+    -fx-background-radius: 4;
+}
+
+.date-picker-popup .selected:hover {
+    -fx-background-color: -fx-primary-dark;
+}
+
+/* ===== BOTONES GENÉRICOS ===== */
+.button {
+    -fx-cursor: hand;
+    -fx-font-weight: 500;
+}
+
+/* ===== BOTÓN CONECTAR ===== */
+.btn-conectar, #btnSeleccionarRepositorio, .btn-search, .btn-backup {
+    -fx-background-color: -fx-primary;
+    -fx-text-fill: white;
+    -fx-background-radius: 8;
+    -fx-padding: 10 24;
+    -fx-font-weight: 600;
+    -fx-font-size: 13px;
+    -fx-cursor: hand;
+    -fx-effect: -fx-shadow-sm;
+}
+
+.btn-conectar:hover, #btnSeleccionarRepositorio:hover,
+.btn-search:hover, .btn-backup:hover {
+    -fx-background-color: -fx-primary-dark;
+    -fx-effect: -fx-shadow-md;
+}
+
+#btnSeleccionarRepositorio:pressed, .btn-conectar:pressed {
+    -fx-background-color: #0a4ea8;
+}
+
+#btnSeleccionarRepositorio:disabled, .btn-conectar:disabled {
+    -fx-background-color: -fx-border-medium;
+    -fx-text-fill: -fx-text-muted;
+    -fx-cursor: default;
+    -fx-effect: null;
+}
+
+/* ===== BOTONES SECUNDARIOS ===== */
+.btn-logs, .btn-nav {
+    -fx-background-color: transparent;
+    -fx-text-fill: -fx-primary;
+    -fx-border-color: -fx-primary;
+    -fx-border-width: 1.5;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-padding: 8 22;
+    -fx-font-weight: 600;
+    -fx-cursor: hand;
+}
+
+.btn-logs:hover, .btn-nav:hover {
+    -fx-background-color: -fx-primary;
+    -fx-text-fill: white;
+    -fx-effect: -fx-shadow-sm;
+}
+
+.btn-logs:pressed, .btn-nav:pressed {
+    -fx-scale-x: 0.98;
+    -fx-scale-y: 0.98;
+}
+
+/* ===== BOTONES CRUD Y PELIGRO ===== */
+.btn-crud, .btn-restore {
+    -fx-background-color: transparent;
+    -fx-text-fill: -fx-secondary;
+    -fx-border-color: -fx-secondary;
+    -fx-border-radius: 8;
+    -fx-padding: 6 16;
+    -fx-font-weight: 500;
+    -fx-cursor: hand;
+}
+
+.btn-crud:hover, .btn-restore:hover {
+    -fx-background-color: -fx-secondary;
+    -fx-text-fill: white;
+}
+
+.btn-danger, .btn-cerrar {
+    -fx-background-color: transparent;
+    -fx-text-fill: #dc2626;
+    -fx-border-color: #dc2626;
+    -fx-border-width: 2;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-padding: 8 22;
+    -fx-font-weight: 700;
+    -fx-cursor: hand;
+}
+
+.btn-danger:hover, .btn-cerrar:hover {
+    -fx-background-color: #dc2626;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, rgba(220, 38, 38, 0.5), 10, 0, 0, 4);
+}
+
+/* FIX: antes decía ".btn-danger:hover, .btn-cerrar:pressed" (bug),
+   ambos botones deben oscurecerse al pulsarlos, no al hacer hover el otro */
+.btn-danger:pressed, .btn-cerrar:pressed {
+    -fx-background-color: #b91c1c;
+    -fx-border-color: #b91c1c;
+}
+
+/* ===== BOTÓN TEMA PEQUEÑO ===== */
+.btn-theme-small, .btn-theme, #btnCambiarPassword {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-border-radius: 20;
+    -fx-background-radius: 20;
+    -fx-text-fill: -fx-primary;
+    -fx-cursor: hand;
+    -fx-padding: 0;
+    -fx-alignment: CENTER;
+    -fx-content-display: CENTER;
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+
+.btn-theme-small {
+    -fx-font-size: 20px;
+    -fx-min-width: 36px;
+    -fx-min-height: 36px;
+}
+
+.btn-theme, #btnCambiarPassword {
+    -fx-font-size: 18px;
+    -fx-min-width: 40px;
+    -fx-min-height: 40px;
+    -fx-text-fill: -fx-text-secondary;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 2, 0, 0, 1);
+}
+
+.btn-theme-small:hover, .btn-theme:hover, #btnCambiarPassword:hover {
+    -fx-background-color: rgba(13, 110, 253, 0.1);
+    -fx-border-color: -fx-primary;
+    -fx-border-width: 1.5;
+    -fx-effect: dropshadow(gaussian, rgba(13, 110, 253, 0.25), 8, 0, 0, 2);
+    -fx-text-fill: -fx-primary;
+}
+
+/* fusionado con el bloque de hover anterior (antes eran dos reglas separadas
+   para el mismo selector) */
+.btn-theme:hover, #btnCambiarPassword:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+.btn-theme-small:pressed, .btn-theme:pressed, #btnCambiarPassword:pressed {
+    -fx-background-color: rgba(13, 110, 253, 0.2);
+    -fx-effect: dropshadow(gaussian, rgba(13, 110, 253, 0.1), 2, 0, 0, 1);
+    -fx-scale-x: 0.95;
+    -fx-scale-y: 0.95;
+}
+
+/* ===== CHIPS / HISTORIAL ===== */
+.chip-historial, #historialPane .button {
+    -fx-background-color: -fx-bg-elevated;
+    -fx-text-fill: -fx-primary;
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+    -fx-border-color: -fx-border-subtle;
+    -fx-border-width: 1;
+    -fx-padding: 4 14;
+    -fx-font-size: 11px;
+    -fx-font-weight: 500;
+    -fx-cursor: hand;
+}
+
+.chip-historial:hover, #historialPane .button:hover {
+    -fx-background-color: -fx-primary;
+    -fx-text-fill: white;
+    -fx-border-color: -fx-primary;
+    -fx-effect: -fx-shadow-btn-hover;
+}
+
+#historialPane .button:hover {
+    -fx-scale-x: 1.02;
+    -fx-scale-y: 1.02;
+}
+
+#historialPane .button:pressed {
+    -fx-scale-x: 0.98;
+    -fx-scale-y: 0.98;
+}
+
+/* Contenedores */
+#historialContainer, .historial-container, #historialPane {
+    -fx-background-color: transparent;
+}
+
+/* ===== GRID DE BOTONES ===== */
+#contenedorBotones {
+    -fx-background-color: transparent;
+    -fx-padding: 16;
+}
+
+#contenedorBotones .button {
+    -fx-background-color: -fx-bg-surface;
+    -fx-text-fill: -fx-text-primary;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-border-color: -fx-border-subtle;
+    -fx-border-width: 1;
+    -fx-padding: 12 20;
+    -fx-font-weight: 500;
+    -fx-font-size: 12px;
+    -fx-effect: -fx-shadow-sm;
+}
+
+#contenedorBotones .button:hover {
+    -fx-background-color: -fx-primary;
+    -fx-border-color: -fx-primary;
+    -fx-text-fill: white;
+    -fx-effect: -fx-shadow-md;
+}
+
+/* ===== LOGS ===== */
+.log-box {
+    -fx-background-color: transparent;
+    -fx-spacing: 6;
+}
+
+.logs {
+    -fx-background-color: -fx-bg-surface;
+    -fx-text-fill: #000000;
+    -fx-padding: 10 14;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-border-color: -fx-border-subtle;
+    -fx-border-width: 1;
+    -fx-font-size: 11px;
+    -fx-font-family: 'JetBrains Mono', 'Monaco', monospace;
+}
+
+.logs-error {
+    -fx-background-color: rgba(239, 68, 68, 0.08);
+    -fx-border-color: -fx-error;
+}
+
+.logs-success {
+    -fx-background-color: rgba(16, 185, 129, 0.08);
+    -fx-border-color: -fx-success;
+}
+
+/* ===== TABLE VIEW ===== */
+.table-view {
+    -fx-background-color: transparent;
+    -fx-border-color: -fx-border-subtle;
+    -fx-border-width: 1;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: -fx-bg-elevated;
+    -fx-background-radius: 10 10 0 0;
+}
+
+.table-view .column-header {
+    -fx-background-color: transparent;
+    -fx-border-color: -fx-border-subtle;
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 12 0;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: -fx-text-primary;
+    -fx-font-weight: 600;
+    -fx-font-size: 12px;
+}
+
+.table-view .table-row-cell {
+    -fx-background-color: -fx-bg-surface;
+    -fx-border-color: transparent;
+    -fx-cell-size: 42;
+}
+
+.table-view .table-row-cell:odd {
+    -fx-background-color: -fx-bg-base;
+}
+
+.table-view .table-row-cell:hover {
+    -fx-background-color: -fx-bg-hover;
+}
+
+.table-view .table-row-cell:selected {
+    -fx-background-color: -fx-primary;
+    -fx-text-fill: white;
+}
+
+.table-view .table-cell {
+    -fx-text-fill: -fx-text-secondary;
+    -fx-padding: 0 12;
+    -fx-font-size: 12px;
+}
+
+/* ===== MENÚ CONTEXTUAL ===== */
+.context-menu {
+    -fx-background-color: -fx-bg-surface;
+    -fx-padding: 6;
+    -fx-effect: -fx-shadow-md;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-border-color: -fx-border-subtle;
+    -fx-border-width: 1;
+}
+
+.menu-item {
+    -fx-padding: 8 14;
+}
+
+.menu-item .label {
+    -fx-text-fill: -fx-text-secondary;
+    -fx-font-size: 12px;
+}
+
+.menu-item:focused {
+    -fx-background-color: -fx-primary;
+    -fx-background-radius: 6;
+}
+
+.menu-item:focused .label {
+    -fx-text-fill: white;
+}
+
+/* ===== LABELS ===== */
+.label {
+    -fx-text-fill: -fx-text-secondary;
+    -fx-font-size: 12px;
+}
+
+#lblStatus {
+    -fx-text-fill: -fx-primary;
+    -fx-font-weight: 600;
+    -fx-font-size: 11px;
+}
+
+#pingIndicator {
+    -fx-font-size: 14px;
+    -fx-cursor: hand;
+}
+
+/* ===== TOOLTIP ===== */
+.tooltip {
+    -fx-background-color: -fx-bg-surface;
+    -fx-text-fill: -fx-text-primary;
+    -fx-padding: 8 12;
+    -fx-font-size: 11px;
+    -fx-effect: -fx-shadow-md;
+    -fx-border-color: -fx-border-subtle;
+    -fx-border-width: 1;
+    -fx-background-radius: 6;
+    -fx-border-radius: 6;
+}
+
+/* ===== CHECKBOX ===== */
+.check-box {
+    -fx-text-fill: -fx-text-secondary;
+    -fx-font-size: 12px;
+}
+
+.check-box .box {
+    -fx-background-color: -fx-bg-surface;
+    -fx-border-color: -fx-border-medium;
+    -fx-border-width: 1.5;
+    -fx-background-radius: 4;
+    -fx-border-radius: 4;
+}
+
+.check-box:selected .mark {
+    -fx-background-color: -fx-primary;
+}
+
+.check-box:selected .box {
+    -fx-background-color: -fx-bg-surface;
+    -fx-border-color: -fx-primary;
+}
+
+/* ===== SEPARADOR ===== */
+.separator .line {
+    -fx-border-color: -fx-border-subtle;
+    -fx-border-width: 1;
+}
+
+/* ===== DIÁLOGOS ===== */
+.dialog-pane {
+    -fx-background-color: -fx-bg-surface;
+    -fx-border-color: -fx-primary;
+    -fx-border-width: 2;
+    -fx-background-radius: 12;
+    -fx-border-radius: 12;
+}
+
+.dialog-pane .header-panel {
+    -fx-background-color: -fx-bg-elevated;
+    -fx-background-radius: 12 12 0 0;
+}
+
+.dialog-pane .header-panel .label {
+    -fx-text-fill: -fx-text-primary;
+    -fx-font-weight: 600;
+}
+
+.dialog-pane .content.label {
+    -fx-text-fill: -fx-text-secondary;
+}
+
+.dialog-pane .button {
+    -fx-background-color: transparent;
+    -fx-text-fill: -fx-primary;
+    -fx-border-color: -fx-primary;
+    -fx-border-radius: 6;
+    -fx-padding: 6 20;
+    -fx-cursor: hand;
+}
+
+.dialog-pane .button:hover {
+    -fx-background-color: -fx-primary;
+    -fx-text-fill: white;
+}
+
+/* ===== SCROLLPANE ===== */
+.scroll-pane {
+    -fx-background: transparent;
+    -fx-background-color: transparent;
+}
+
+.scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+/* ===== PESTAÑAS ===== */
+.tab-pane {
+    -fx-background-color: transparent;
+}
+
+.tab-header-area {
+    -fx-background-color: transparent;
+}
+
+.tab {
+    -fx-background-color: -fx-bg-elevated;
+    -fx-text-fill: -fx-text-secondary;
+    -fx-background-radius: 8 8 0 0;
+    -fx-padding: 8 20;
+}
+
+.tab:selected {
+    -fx-background-color: -fx-bg-surface;
+    -fx-text-fill: -fx-primary;
+    -fx-border-color: -fx-primary;
+    -fx-border-width: 0 0 2 0;
+}
+
+/* ===== BADGES ===== */
+.badge {
+    -fx-background-color: -fx-primary;
+    -fx-text-fill: white;
+    -fx-background-radius: 14;
+    -fx-padding: 2 10;
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+}
+
+/* ===== ESTADOS ===== */
+.status-connected {
+    -fx-text-fill: -fx-success;
+}
+
+.status-disconnected {
+    -fx-text-fill: -fx-error;
+}
+
+.status-warning {
+    -fx-text-fill: -fx-warning;
+}
+
+/* ===== BUSCADOR DE LOGS ===== */
+#searchContainer, .search-container {
+    -fx-background-color: transparent;
+    -fx-spacing: 10;
+    -fx-padding: 8 0 8 0;
+}
+
+#searchField {
+    -fx-font-family: 'JetBrains Mono', 'Consolas', monospace;
+}
+
+.btn-search {
+    -fx-padding: 8 18;
+    -fx-font-weight: 600;
+    -fx-font-size: 12px;
+}
+
+.btn-search:pressed {
+    -fx-scale-x: 0.98;
+    -fx-scale-y: 0.98;
+}
+
+#searchStatus {
+    -fx-font-size: 11px;
+    -fx-font-weight: 500;
+    -fx-padding: 0 8;
+    -fx-text-fill: -fx-text-muted;
+}
+
+#searchStatus.has-results {
+    -fx-text-fill: -fx-success;
+}
+
+#searchStatus.no-results {
+    -fx-text-fill: -fx-error;
+}
+
+.search-label {
+    -fx-text-fill: -fx-text-primary;
+    -fx-font-weight: 600;
+    -fx-font-size: 12px;
+}
+
+/* ===== FIRMA DEL DESARROLLADOR ===== */
+.dev-signature-footer {
+    -fx-padding: 14 0 6 0;
+}
+
+.dev-signature-footer .separator .line {
+    -fx-border-color: rgba(13,110,253,0.2);
+}
+
+.dev-text, .dev-license {
+    -fx-text-fill: #6c757d;
+    -fx-font-size: 11px;
+}
+
+.dev-license {
+    -fx-font-size: 10px;
+}
+
+/* ===== VENTANA MINI ===== */
+.mini-ventana {
+    -fx-background-color: -fx-bg-base;
+    -fx-border-color: -fx-border-subtle;
+    -fx-border-width: 2;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 12, 0, 0, 4);
+    -fx-padding: 0;
+}
+
+.mini-ventana .scroll-pane {
+    -fx-background-color: -fx-bg-base;
+    -fx-background: -fx-bg-base;
+    -fx-padding: 0;
+    -fx-border-color: transparent;
+}
+
+.mini-ventana .scroll-pane .viewport {
+    -fx-background-color: -fx-bg-base;
+}
+
+.mini-ventana .scroll-bar {
+    -fx-background-color: -fx-bg-base;
+    -fx-pref-width: 8;
+}
+
+.mini-ventana .scroll-bar .thumb {
+    -fx-background-color: -fx-border-medium;
+    -fx-background-radius: 4;
+    -fx-padding: 3;
+    -fx-border-color: -fx-border-subtle;
+    -fx-border-width: 1;
+    -fx-border-radius: 4;
+}
+
+.mini-ventana .scroll-bar .track {
+    -fx-background-color: -fx-bg-elevated;
+    -fx-border-color: -fx-border-subtle;
+    -fx-border-width: 0 1 0 0;
+}
+
+.mini-ventana .scroll-bar .increment-button,
+.mini-ventana .scroll-bar .decrement-button {
+    -fx-background-color: -fx-bg-elevated;
+    -fx-padding: 4;
+    -fx-text-fill: -fx-text-muted;
+}
+
+.mini-ventana .scroll-bar .increment-button:hover,
+.mini-ventana .scroll-bar .decrement-button:hover {
+    -fx-background-color: -fx-bg-hover;
+    -fx-text-fill: -fx-primary;
+}
+
+.mini-ventana .grid-mini {
+    -fx-padding: 12;
+    -fx-hgap: 10;
+    -fx-vgap: 10;
+    -fx-background-color: transparent;
+}
+
+.mini-ventana .btn-mini {
+    -fx-pref-width: 100px;
+    -fx-pref-height: 100px;
+    -fx-min-width: 100px;
+    -fx-min-height: 100px;
+    -fx-max-width: 100px;
+    -fx-max-height: 100px;
+    -fx-font-size: 12px;
+    -fx-font-family: "Segoe UI", "System", sans-serif;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-text-secondary;
+    -fx-background-color: -fx-bg-surface;
+    -fx-background-radius: 8;
+    -fx-border-color: -fx-border-subtle;
+    -fx-border-width: 1.5;
+    -fx-border-radius: 8;
+    -fx-padding: 8 4 6 4;
+    -fx-wrap-text: true;
+    -fx-alignment: top-center;
+    -fx-cursor: hand;
+    -fx-effect: -fx-shadow-sm;
+}
+
+.mini-ventana .btn-mini .image-view {
+    -fx-fit-width: 32px;
+    -fx-fit-height: 32px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 2, 0, 0, 1);
+}
+
+.mini-ventana .btn-mini:hover {
+    -fx-background-color: -fx-primary;
+    -fx-border-color: -fx-primary;
+    -fx-text-fill: white;
+    -fx-effect: -fx-shadow-md;
+    -fx-scale-x: 1.03;
+    -fx-scale-y: 1.03;
+}
+
+.mini-ventana .btn-mini:hover .image-view {
+    -fx-effect: dropshadow(gaussian, rgba(255,255,255,0.4), 6, 0, 0, 2);
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+
+.mini-ventana .btn-mini:pressed {
+    -fx-background-color: -fx-primary-dark;
+    -fx-border-color: -fx-primary-dark;
+    -fx-scale-x: 0.97;
+    -fx-scale-y: 0.97;
+}
+
+.mini-ventana .btn-mini:pressed .image-view {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 2, 0, 0, 1);
+    -fx-scale-x: 0.95;
+    -fx-scale-y: 0.95;
+}
+
+.mini-ventana .btn-mini-peligro:hover {
+    -fx-background-color: -fx-error;
+    -fx-border-color: -fx-error;
+    -fx-text-fill: white;
+}
+
+.mini-ventana .btn-mini-exito:hover {
+    -fx-background-color: -fx-success;
+    -fx-border-color: -fx-success;
+    -fx-text-fill: white;
+}
+
+.mini-ventana .barra-inferior {
+    -fx-background-color: -fx-bg-elevated;
+    -fx-padding: 6 14 6 14;
+    -fx-border-color: -fx-border-subtle transparent transparent transparent;
+    -fx-border-width: 1;
+    -fx-min-height: 32;
+}
+
+.mini-ventana .lbl-info {
+    -fx-text-fill: -fx-text-muted;
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-font-family: "Segoe UI", "System", sans-serif;
+    -fx-padding: 0 8 0 0;
+}
+
+.mini-ventana .lbl-info:hover {
+    -fx-text-fill: -fx-primary;
+}
+
+.mini-ventana .btn-control {
+    -fx-background-color: transparent;
+    -fx-text-fill: -fx-text-muted;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-padding: 4 10 4 10;
+    -fx-background-radius: 4;
+    -fx-cursor: hand;
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+}
+
+.mini-ventana .btn-control:hover {
+    -fx-background-color: -fx-bg-hover;
+    -fx-text-fill: -fx-primary;
+    -fx-border-color: -fx-primary;
+    -fx-border-width: 0 0 2 0;
+}
+
+.mini-ventana .btn-control:pressed {
+    -fx-background-color: -fx-primary;
+    -fx-text-fill: white;
+}
+
+.mini-ventana .tooltip {
+    -fx-background-color: -fx-bg-surface;
+    -fx-text-fill: -fx-text-primary;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6;
+    -fx-border-color: -fx-border-subtle;
+    -fx-border-width: 1;
+    -fx-border-radius: 6;
+    -fx-padding: 8 14 8 14;
+    -fx-effect: -fx-shadow-md;
+}
+
+/* ===== MODO MINI =====
+   NOTA: se eliminó "!important" en todas estas reglas porque JavaFX CSS
+   no lo soporta; su presencia podía provocar que el parser descartase
+   la declaración entera en vez de simplemente ignorar la palabra clave. */
+.mini-mode .contenedor {
+    -fx-padding: 8;
+    -fx-spacing: 8;
+}
+
+.mini-mode .grid-pane {
+    -fx-hgap: 6;
+    -fx-vgap: 6;
+}
+
+.mini-mode .button {
+    -fx-font-size: 9px;
+    -fx-padding: 3 2 3 2;
+    -fx-background-radius: 4;
+    -fx-border-radius: 4;
+    -fx-min-height: 45px;
+    -fx-min-width: 70px;
+}
+
+.mini-mode .button .image-view {
+    -fx-fit-width: 20px;
+    -fx-fit-height: 20px;
+}
+
+.mini-mode .text-field {
+    -fx-font-size: 11px;
+    -fx-padding: 3 6 3 6;
+    -fx-pref-height: 28px;
+}
+
+.mini-mode .label {
+    -fx-font-size: 10px;
+}
+
+.mini-mode .btn-conectar {
+    -fx-font-size: 11px;
+    -fx-padding: 4 12 4 12;
+    -fx-pref-height: 32px;
+}
+
+.mini-mode .btn-logs {
+    -fx-font-size: 10px;
+    -fx-padding: 3 8 3 8;
+    -fx-pref-height: 30px;
+}
+
+.mini-mode .btn-theme-small {
+    -fx-font-size: 12px;
+    -fx-padding: 4 8 4 8;
+    -fx-min-width: 32px;
+    -fx-min-height: 28px;
+}
+
+.mini-mode .log-box {
+    -fx-min-height: 60px;
+    -fx-pref-height: 80px;
+    -fx-padding: 5;
+}
+
+.mini-mode .log-box .label {
+    -fx-font-size: 9px;
+}
+
+.mini-mode .dev-signature-footer {
+    -fx-opacity: 0.6;
+    -fx-scale-y: 0.9;
+}
+
+.mini-mode .dev-text, .mini-mode .dev-license {
+    -fx-font-size: 9px;
+}
+
+/* ========================================
+   MODO OSCURO
+   ======================================== */
+.root.dark-mode {
+    -fx-primary: #3b82f6;
+    -fx-primary-dark: #2563eb;
+    -fx-primary-light: #60a5fa;
+    -fx-secondary: #06b6d4;
+    -fx-secondary-dark: #0891b2;
+    -fx-bg-base: #0f172a;
+    -fx-bg-surface: #1e293b;
+    -fx-bg-elevated: #334155;
+    -fx-bg-hover: #475569;
+    -fx-border-subtle: #475569;
+    -fx-border-medium: #64748b;
+    -fx-border-accent: #3b82f6;
+    -fx-text-primary: #f1f5f9;
+    -fx-text-secondary: #cbd5e1;
+    -fx-text-muted: #94a3b8;
+}
+
+.root.dark-mode .text-field,
+.root.dark-mode .text-area,
+.root.dark-mode .combo-box,
+.root.dark-mode #searchField {
+    -fx-background-color: #334155;
+    -fx-text-fill: -fx-text-primary;
+    -fx-border-color: #475569;
+}
+
+.root.dark-mode .text-area .content {
+    -fx-background-color: #334155;
+}
+
+.root.dark-mode .date-picker,
+.root.dark-mode .date-picker .text-field,
+.root.dark-mode .date-picker .arrow-button {
+    -fx-background-color: #334155;
+    -fx-text-fill: -fx-text-primary;
+    -fx-border-color: #475569;
+}
+
+.root.dark-mode .date-picker:focused {
+    -fx-border-color: -fx-primary-light;
+}
+
+.root.dark-mode .date-picker-popup {
+    -fx-background-color: #1e293b;
+    -fx-border-color: -fx-primary;
+}
+
+.root.dark-mode .date-picker-popup > .month-year-pane {
+    -fx-background-color: #334155;
+}
+
+.root.dark-mode .date-picker-popup .day-cell {
+    -fx-background-color: #1e293b;
+    -fx-text-fill: -fx-text-primary;
+}
+
+.root.dark-mode .date-picker-popup .day-cell:hover {
+    -fx-background-color: #475569;
+    -fx-text-fill: -fx-primary-light;
+}
+
+.root.dark-mode .table-view .column-header-background {
+    -fx-background-color: #1e293b;
+}
+
+.root.dark-mode .table-view .table-row-cell {
+    -fx-background-color: #1e293b;
+}
+
+.root.dark-mode .table-view .table-row-cell:odd {
+    -fx-background-color: #0f172a;
+}
+
+.root.dark-mode .chip-historial,
+.root.dark-mode #historialPane .button {
+    -fx-background-color: #334155;
+    -fx-text-fill: -fx-primary;
+    -fx-border-color: #475569;
+}
+
+.root.dark-mode .btn-theme-small {
+    -fx-text-fill: #60a5fa;
+    -fx-opacity: 0.8;
+}
+
+.root.dark-mode .btn-theme-small:hover {
+    -fx-opacity: 1;
+    -fx-border-color: #60a5fa;
+    -fx-background-color: rgba(96,165,250,0.12);
+    -fx-effect: dropshadow(gaussian, rgba(96,165,250,0.25), 6, 0, 0, 0);
+}
+
+.root.dark-mode .btn-theme,
+.root.dark-mode #btnCambiarPassword {
+    -fx-text-fill: #60a5fa;
+}
+
+.root.dark-mode .btn-theme:hover,
+.root.dark-mode #btnCambiarPassword:hover {
+    -fx-border-color: #60a5fa;
+    -fx-background-color: rgba(96,165,250,0.08);
+}
+
+.root.dark-mode #searchField:focused {
+    -fx-border-color: -fx-primary-light;
+}
+
+.root.dark-mode .btn-search:hover {
+    -fx-background-color: -fx-primary-dark;
+}
+
+.root.dark-mode .btn-nav {
+    -fx-text-fill: -fx-primary-light;
+    -fx-border-color: -fx-primary-light;
+}
+
+.root.dark-mode .btn-nav:hover {
+    -fx-background-color: -fx-primary-light;
+    -fx-text-fill: #0f172a;
+}
+
+.root.dark-mode .search-label {
+    -fx-text-fill: -fx-text-primary;
+}
+
+.root.dark-mode .dev-text,
+.root.dark-mode .dev-license {
+    -fx-text-fill: #94a3b8;
+}
+
+.root.dark-mode .dev-signature-footer .separator .line {
+    -fx-border-color: rgba(59,130,246,0.3);
+}
+
+.root.dark-mode #historialPane .button:hover {
+    -fx-effect: dropshadow(gaussian, rgba(59,130,246,0.4), 8, 0, 0, 2);
+}
+
+.root.dark-mode .mini-ventana {
+    -fx-background-color: -fx-bg-base;
+    -fx-border-color: -fx-border-subtle;
+}
+
+.root.dark-mode .mini-ventana .scroll-pane,
+.root.dark-mode .mini-ventana .scroll-pane .viewport {
+    -fx-background-color: -fx-bg-base;
+}
+
+.root.dark-mode .mini-ventana .btn-mini {
+    -fx-background-color: -fx-bg-surface;
+    -fx-border-color: -fx-border-subtle;
+    -fx-text-fill: -fx-text-secondary;
+}
+
+.root.dark-mode .mini-ventana .btn-mini .image-view {
+    -fx-effect: dropshadow(gaussian, rgba(255,255,255,0.05), 2, 0, 0, 1);
+}
+
+.root.dark-mode .mini-ventana .btn-mini:hover {
+    -fx-background-color: -fx-primary;
+    -fx-border-color: -fx-primary;
+    -fx-text-fill: white;
+}
+
+.root.dark-mode .mini-ventana .barra-inferior {
+    -fx-background-color: -fx-bg-elevated;
+    -fx-border-color: -fx-border-subtle transparent transparent transparent;
+}
+
+.root.dark-mode .mini-ventana .lbl-info {
+    -fx-text-fill: -fx-text-muted;
+}
+
+.root.dark-mode .mini-ventana .btn-control {
+    -fx-text-fill: -fx-text-muted;
+}
+
+.root.dark-mode .mini-ventana .btn-control:hover {
+    -fx-background-color: -fx-bg-hover;
+    -fx-text-fill: -fx-primary;
+}
+
+.root.dark-mode .mini-ventana .scroll-bar {
+    -fx-background-color: -fx-bg-base;
+}
+
+.root.dark-mode .mini-ventana .scroll-bar .thumb {
+    -fx-background-color: -fx-border-medium;
+    -fx-border-color: -fx-border-subtle;
+}
+
+.root.dark-mode .mini-ventana .scroll-bar .track {
+    -fx-background-color: -fx-bg-elevated;
+    -fx-border-color: -fx-border-subtle;
+}
+
+.root.dark-mode .mini-ventana .scroll-bar .increment-button,
+.root.dark-mode .mini-ventana .scroll-bar .decrement-button {
+    -fx-background-color: -fx-bg-elevated;
+    -fx-text-fill: -fx-text-muted;
+}
+
+.root.dark-mode .mini-ventana .scroll-bar .increment-button:hover,
+.root.dark-mode .mini-ventana .scroll-bar .decrement-button:hover {
+    -fx-background-color: -fx-bg-hover;
+    -fx-text-fill: -fx-primary;
+}
+
+.root.dark-mode .mini-ventana .tooltip {
+    -fx-background-color: -fx-bg-surface;
+    -fx-text-fill: -fx-text-primary;
+    -fx-border-color: -fx-border-subtle;
+}
+
+/* ========================================
+   TEMA DRACULA
+   ======================================== */
+.root.dracula-mode {
+    -fx-primary: #a855f7;
+    -fx-primary-dark: #ec4899;
+    -fx-primary-light: #22d3ee;
+    -fx-secondary: #06b6d4;
+    -fx-secondary-dark: #6b7280;
+    -fx-bg-base: #1e1e2e;
+    -fx-bg-surface: #2d2d44;
+    -fx-bg-elevated: #3b3b5a;
+    -fx-bg-hover: #7c3aed;
+    -fx-border-subtle: #4c4c6a;
+    -fx-border-medium: #6b6b8a;
+    -fx-border-accent: #a855f7;
+    -fx-text-primary: #f1f5f9;
+    -fx-text-secondary: #a5b4fc;
+    -fx-text-muted: #8b8ba3;
+    -fx-success: #34d399;
+    -fx-warning: #fbbf24;
+    -fx-error: #f87171;
+    -fx-info: #38bdf8;
+    -fx-shadow-sm: dropshadow(gaussian, rgba(0,0,0,0.7), 4, 0, 0, 1);
+    -fx-shadow-md: dropshadow(gaussian, rgba(0,0,0,0.8), 8, 0, 0, 2);
+}
+
+.root.dracula-mode .text-field,
+.root.dracula-mode .text-area,
+.root.dracula-mode .combo-box,
+.root.dracula-mode #searchField {
+    -fx-background-color: -fx-bg-surface;
+    -fx-text-fill: -fx-text-primary;
+    -fx-prompt-text-fill: -fx-text-muted;
+    -fx-border-color: -fx-border-medium;
+}
+
+.root.dracula-mode .text-area .content {
+    -fx-background-color: -fx-bg-surface;
+}
+
+.root.dracula-mode .date-picker,
+.root.dracula-mode .date-picker .text-field,
+.root.dracula-mode .date-picker .arrow-button {
+    -fx-background-color: -fx-bg-surface;
+    -fx-text-fill: -fx-text-primary;
+    -fx-border-color: -fx-border-medium;
+}
+
+.root.dracula-mode .date-picker:focused {
+    -fx-border-color: -fx-primary;
+}
+
+.root.dracula-mode .date-picker-popup {
+    -fx-background-color: -fx-bg-surface;
+    -fx-border-color: -fx-primary;
+}
+
+.root.dracula-mode .date-picker-popup > .month-year-pane {
+    -fx-background-color: -fx-bg-elevated;
+}
+
+.root.dracula-mode .date-picker-popup .day-cell {
+    -fx-background-color: -fx-bg-surface;
+    -fx-text-fill: -fx-text-primary;
+}
+
+.root.dracula-mode .date-picker-popup .day-cell:hover {
+    -fx-background-color: -fx-bg-hover;
+    -fx-text-fill: -fx-bg-base;
+}
+
+.root.dracula-mode .date-picker-popup .selected {
+    -fx-background-color: -fx-primary;
+    -fx-text-fill: -fx-bg-base;
+}
+
+.root.dracula-mode .btn-conectar,
+.root.dracula-mode .btn-search,
+.root.dracula-mode #btnSeleccionarRepositorio,
+.root.dracula-mode .btn-backup {
+    -fx-background-color: -fx-primary;
+    -fx-text-fill: -fx-bg-base;
+}
+
+.root.dracula-mode .btn-conectar:hover,
+.root.dracula-mode .btn-search:hover,
+.root.dracula-mode #btnSeleccionarRepositorio:hover,
+.root.dracula-mode .btn-backup:hover {
+    -fx-background-color: -fx-primary-dark;
+}
+
+.root.dracula-mode .btn-logs,
+.root.dracula-mode .btn-crud,
+.root.dracula-mode .btn-nav,
+.root.dracula-mode .btn-restore {
+    -fx-text-fill: -fx-primary;
+    -fx-border-color: -fx-primary;
+}
+
+.root.dracula-mode .btn-logs:hover,
+.root.dracula-mode .btn-crud:hover,
+.root.dracula-mode .btn-nav:hover,
+.root.dracula-mode .btn-restore:hover {
+    -fx-background-color: -fx-primary;
+    -fx-text-fill: -fx-bg-base;
+}
+
+.root.dracula-mode .btn-danger,
+.root.dracula-mode .btn-cerrar {
+    -fx-text-fill: -fx-error;
+    -fx-border-color: -fx-error;
+}
+
+.root.dracula-mode .btn-danger:hover,
+.root.dracula-mode .btn-cerrar:hover {
+    -fx-background-color: -fx-error;
+    -fx-text-fill: -fx-bg-base;
+}
+
+.root.dracula-mode .btn-theme,
+.root.dracula-mode #btnCambiarPassword {
+    -fx-text-fill: -fx-text-muted;
+}
+
+.root.dracula-mode .btn-theme:hover,
+.root.dracula-mode #btnCambiarPassword:hover {
+    -fx-background-color: rgba(168, 85, 247, 0.25);
+    -fx-border-color: -fx-primary;
+    -fx-text-fill: -fx-primary;
+}
+
+.root.dracula-mode .table-view .column-header-background {
+    -fx-background-color: -fx-bg-elevated;
+}
+
+.root.dracula-mode .table-view .table-row-cell {
+    -fx-background-color: -fx-bg-surface;
+}
+
+.root.dracula-mode .table-view .table-row-cell:odd {
+    -fx-background-color: -fx-bg-base;
+}
+
+.root.dracula-mode .table-view .table-row-cell:hover {
+    -fx-background-color: -fx-bg-hover;
+}
+
+.root.dracula-mode .table-view .table-row-cell:selected {
+    -fx-background-color: -fx-primary;
+}
+
+.root.dracula-mode .table-view .table-row-cell:selected .table-cell {
+    -fx-text-fill: -fx-bg-base;
+}
+
+.root.dracula-mode .chip-historial,
+.root.dracula-mode #historialPane .button {
+    -fx-background-color: -fx-bg-elevated;
+    -fx-text-fill: -fx-primary-light;
+    -fx-border-color: -fx-border-medium;
+}
+
+.root.dracula-mode .chip-historial:hover,
+.root.dracula-mode #historialPane .button:hover {
+    -fx-background-color: -fx-primary;
+    -fx-text-fill: -fx-bg-base;
+    -fx-border-color: -fx-primary;
+}
+
+.root.dracula-mode .logs {
+    -fx-background-color: -fx-bg-surface;
+    -fx-text-fill: -fx-text-primary;
+    -fx-border-color: -fx-border-medium;
+}
+
+.root.dracula-mode .logs-error {
+    -fx-background-color: rgba(248, 113, 113, 0.2);
+    -fx-border-color: -fx-error;
+}
+
+.root.dracula-mode .logs-success {
+    -fx-background-color: rgba(52, 211, 153, 0.2);
+    -fx-border-color: -fx-success;
+}
+
+.root.dracula-mode .context-menu {
+    -fx-background-color: -fx-bg-surface;
+    -fx-border-color: -fx-border-medium;
+}
+
+.root.dracula-mode .menu-item .label {
+    -fx-text-fill: -fx-text-primary;
+}
+
+.root.dracula-mode .menu-item:focused {
+    -fx-background-color: -fx-primary;
+}
+
+.root.dracula-mode .menu-item:focused .label {
+    -fx-text-fill: -fx-bg-base;
+}
+
+.root.dracula-mode .dialog-pane {
+    -fx-background-color: -fx-bg-surface;
+    -fx-border-color: -fx-primary;
+}
+
+.root.dracula-mode .dialog-pane .header-panel {
+    -fx-background-color: -fx-bg-elevated;
+}
+
+.root.dracula-mode .dialog-pane .header-panel .label {
+    -fx-text-fill: -fx-text-primary;
+}
+
+.root.dracula-mode .dialog-pane .content.label {
+    -fx-text-fill: -fx-text-secondary;
+}
+
+.root.dracula-mode .dialog-pane .button {
+    -fx-text-fill: -fx-primary;
+    -fx-border-color: -fx-primary;
+}
+
+.root.dracula-mode .dialog-pane .button:hover {
+    -fx-background-color: -fx-primary;
+    -fx-text-fill: -fx-bg-base;
+}
+
+.root.dracula-mode .scroll-bar .thumb {
+    -fx-background-color: -fx-border-medium;
+    -fx-border-color: -fx-border-subtle;
+}
+
+.root.dracula-mode .scroll-bar .thumb:hover {
+    -fx-background-color: -fx-primary;
+}
+
+.root.dracula-mode .scroll-bar .track {
+    -fx-background-color: -fx-bg-elevated;
+    -fx-border-color: -fx-border-subtle;
+}
+
+.root.dracula-mode .scroll-bar .increment-button,
+.root.dracula-mode .scroll-bar .decrement-button {
+    -fx-background-color: -fx-bg-elevated;
+    -fx-text-fill: -fx-text-muted;
+}
+
+.root.dracula-mode .scroll-bar .increment-button:hover,
+.root.dracula-mode .scroll-bar .decrement-button:hover {
+    -fx-background-color: -fx-bg-hover;
+    -fx-text-fill: -fx-primary;
+}
+
+.root.dracula-mode .mini-ventana {
+    -fx-background-color: -fx-bg-base;
+    -fx-border-color: -fx-border-subtle;
+}
+
+.root.dracula-mode .mini-ventana .btn-mini {
+    -fx-background-color: -fx-bg-surface;
+    -fx-border-color: -fx-border-subtle;
+    -fx-text-fill: -fx-text-secondary;
+}
+
+.root.dracula-mode .mini-ventana .btn-mini:hover {
+    -fx-background-color: -fx-primary;
+    -fx-border-color: -fx-primary;
+    -fx-text-fill: -fx-bg-base;
+}
+
+.root.dracula-mode .mini-ventana .barra-inferior {
+    -fx-background-color: -fx-bg-elevated;
+    -fx-border-color: -fx-border-subtle transparent transparent transparent;
+}
+
+.root.dracula-mode .mini-ventana .lbl-info {
+    -fx-text-fill: -fx-text-muted;
+}
+
+.root.dracula-mode .mini-ventana .btn-control {
+    -fx-text-fill: -fx-text-muted;
+}
+
+.root.dracula-mode .mini-ventana .btn-control:hover {
+    -fx-background-color: -fx-bg-hover;
+    -fx-text-fill: -fx-primary;
+}
+
+.root.dracula-mode .dev-text,
+.root.dracula-mode .dev-license {
+    -fx-text-fill: -fx-text-muted;
+}
+
+.root.dracula-mode .dev-signature-footer .separator .line {
+    -fx-border-color: rgba(168, 85, 247, 0.4);
+}
+
+/* ========================================
+   TEMA MATRIX (SIN NEÓN)
+   ======================================== */
+.root.matrix-mode {
+    -fx-primary: #00ff41;
+    -fx-primary-dark: #00b82e;
+    -fx-primary-light: #5fff8f;
+    -fx-secondary: #00cc33;
+    -fx-secondary-dark: #008f24;
+    -fx-bg-base: #000000;
+    -fx-bg-surface: #0a0f0a;
+    -fx-bg-elevated: #111811;
+    -fx-bg-hover: #1a3320;
+    -fx-border-subtle: #1f4d29;
+    -fx-border-medium: #2e6b3a;
+    -fx-border-accent: #00ff41;
+    -fx-text-primary: #d5ffd8;
+    -fx-text-secondary: #7fdb8f;
+    -fx-text-muted: #4d8a58;
+    -fx-success: #00ff41;
+    -fx-warning: #ffd400;
+    -fx-error: #ff3b3b;
+    -fx-info: #00cfff;
+    /* Sin efectos neón: usamos sombras suaves oscuras */
+    -fx-shadow-sm: dropshadow(gaussian, rgba(0,0,0,0.5), 4, 0, 0, 1);
+    -fx-shadow-md: dropshadow(gaussian, rgba(0,0,0,0.7), 8, 0, 0, 2);
+}
+
+.root.matrix-mode .text-field,
+.root.matrix-mode .text-area,
+.root.matrix-mode .combo-box,
+.root.matrix-mode #searchField {
+    -fx-background-color: -fx-bg-surface;
+    -fx-text-fill: -fx-primary;
+    -fx-prompt-text-fill: -fx-text-muted;
+    -fx-border-color: -fx-border-medium;
+}
+
+.root.matrix-mode .text-area .content {
+    -fx-background-color: -fx-bg-surface;
+}
+
+.root.matrix-mode .date-picker,
+.root.matrix-mode .date-picker .text-field,
+.root.matrix-mode .date-picker .arrow-button {
+    -fx-background-color: -fx-bg-surface;
+    -fx-text-fill: -fx-primary;
+    -fx-border-color: -fx-border-medium;
+}
+
+.root.matrix-mode .date-picker:focused {
+    -fx-border-color: -fx-primary;
+    -fx-effect: -fx-shadow-sm;
+}
+
+.root.matrix-mode .date-picker-popup {
+    -fx-background-color: -fx-bg-surface;
+    -fx-border-color: -fx-primary;
+}
+
+.root.matrix-mode .date-picker-popup > .month-year-pane {
+    -fx-background-color: -fx-bg-elevated;
+}
+
+.root.matrix-mode .date-picker-popup .day-cell {
+    -fx-background-color: -fx-bg-surface;
+    -fx-text-fill: -fx-text-primary;
+}
+
+.root.matrix-mode .date-picker-popup .day-cell:hover {
+    -fx-background-color: -fx-bg-hover;
+    -fx-text-fill: -fx-primary;
+}
+
+.root.matrix-mode .date-picker-popup .selected {
+    -fx-background-color: -fx-primary;
+    -fx-text-fill: -fx-bg-base;
+}
+
+.root.matrix-mode .btn-conectar,
+.root.matrix-mode .btn-search,
+.root.matrix-mode #btnSeleccionarRepositorio,
+.root.matrix-mode .btn-backup {
+    -fx-background-color: -fx-primary;
+    -fx-text-fill: -fx-bg-base;
+    -fx-effect: -fx-shadow-sm;
+}
+
+.root.matrix-mode .btn-conectar:hover,
+.root.matrix-mode .btn-search:hover,
+.root.matrix-mode #btnSeleccionarRepositorio:hover,
+.root.matrix-mode .btn-backup:hover {
+    -fx-background-color: -fx-primary-dark;
+    -fx-effect: -fx-shadow-md;
+}
+
+.root.matrix-mode .btn-logs,
+.root.matrix-mode .btn-crud,
+.root.matrix-mode .btn-nav,
+.root.matrix-mode .btn-restore {
+    -fx-text-fill: -fx-primary;
+    -fx-border-color: -fx-primary;
+}
+
+.root.matrix-mode .btn-logs:hover,
+.root.matrix-mode .btn-crud:hover,
+.root.matrix-mode .btn-nav:hover,
+.root.matrix-mode .btn-restore:hover {
+    -fx-background-color: -fx-primary;
+    -fx-text-fill: -fx-bg-base;
+}
+
+.root.matrix-mode .btn-danger,
+.root.matrix-mode .btn-cerrar {
+    -fx-text-fill: -fx-error;
+    -fx-border-color: -fx-error;
+}
+
+.root.matrix-mode .btn-danger:hover,
+.root.matrix-mode .btn-cerrar:hover {
+    -fx-background-color: -fx-error;
+    -fx-text-fill: -fx-bg-base;
+}
+
+.root.matrix-mode .btn-theme,
+.root.matrix-mode #btnCambiarPassword {
+    -fx-text-fill: -fx-text-muted;
+}
+
+.root.matrix-mode .btn-theme:hover,
+.root.matrix-mode #btnCambiarPassword:hover {
+    -fx-background-color: rgba(0, 255, 65, 0.15);
+    -fx-border-color: -fx-primary;
+    -fx-text-fill: -fx-primary;
+}
+
+.root.matrix-mode .table-view .column-header-background {
+    -fx-background-color: -fx-bg-elevated;
+}
+
+.root.matrix-mode .table-view .table-row-cell {
+    -fx-background-color: -fx-bg-surface;
+}
+
+.root.matrix-mode .table-view .table-row-cell:odd {
+    -fx-background-color: -fx-bg-base;
+}
+
+.root.matrix-mode .table-view .table-row-cell:hover {
+    -fx-background-color: -fx-bg-hover;
+}
+
+.root.matrix-mode .table-view .table-row-cell:selected {
+    -fx-background-color: -fx-primary;
+}
+
+.root.matrix-mode .table-view .table-row-cell:selected .table-cell {
+    -fx-text-fill: -fx-bg-base;
+}
+
+.root.matrix-mode .chip-historial,
+.root.matrix-mode #historialPane .button {
+    -fx-background-color: -fx-bg-elevated;
+    -fx-text-fill: -fx-primary-light;
+    -fx-border-color: -fx-border-medium;
+}
+
+.root.matrix-mode .chip-historial:hover,
+.root.matrix-mode #historialPane .button:hover {
+    -fx-background-color: -fx-primary;
+    -fx-text-fill: -fx-bg-base;
+    -fx-border-color: -fx-primary;
+}
+
+.root.matrix-mode .logs {
+    -fx-background-color: -fx-bg-surface;
+    -fx-text-fill: -fx-primary;
+    -fx-border-color: -fx-border-medium;
+}
+
+.root.matrix-mode .logs-error {
+    -fx-background-color: rgba(255, 59, 59, 0.15);
+    -fx-border-color: -fx-error;
+}
+
+.root.matrix-mode .logs-success {
+    -fx-background-color: rgba(0, 255, 65, 0.15);
+    -fx-border-color: -fx-success;
+}
+
+.root.matrix-mode .context-menu {
+    -fx-background-color: -fx-bg-surface;
+    -fx-border-color: -fx-border-medium;
+}
+
+.root.matrix-mode .menu-item .label {
+    -fx-text-fill: -fx-text-primary;
+}
+
+.root.matrix-mode .menu-item:focused {
+    -fx-background-color: -fx-primary;
+}
+
+.root.matrix-mode .menu-item:focused .label {
+    -fx-text-fill: -fx-bg-base;
+}
+
+.root.matrix-mode .dialog-pane {
+    -fx-background-color: -fx-bg-surface;
+    -fx-border-color: -fx-primary;
+}
+
+.root.matrix-mode .dialog-pane .header-panel {
+    -fx-background-color: -fx-bg-elevated;
+}
+
+.root.matrix-mode .dialog-pane .header-panel .label {
+    -fx-text-fill: -fx-text-primary;
+}
+
+.root.matrix-mode .dialog-pane .content.label {
+    -fx-text-fill: -fx-text-secondary;
+}
+
+.root.matrix-mode .dialog-pane .button {
+    -fx-text-fill: -fx-primary;
+    -fx-border-color: -fx-primary;
+}
+
+.root.matrix-mode .dialog-pane .button:hover {
+    -fx-background-color: -fx-primary;
+    -fx-text-fill: -fx-bg-base;
+}
+
+.root.matrix-mode .scroll-bar .thumb {
+    -fx-background-color: -fx-border-medium;
+    -fx-border-color: -fx-border-subtle;
+}
+
+.root.matrix-mode .scroll-bar .thumb:hover {
+    -fx-background-color: -fx-primary;
+}
+
+.root.matrix-mode .scroll-bar .track {
+    -fx-background-color: -fx-bg-elevated;
+    -fx-border-color: -fx-border-subtle;
+}
+
+.root.matrix-mode .scroll-bar .increment-button,
+.root.matrix-mode .scroll-bar .decrement-button {
+    -fx-background-color: -fx-bg-elevated;
+    -fx-text-fill: -fx-text-muted;
+}
+
+.root.matrix-mode .scroll-bar .increment-button:hover,
+.root.matrix-mode .scroll-bar .decrement-button:hover {
+    -fx-background-color: -fx-bg-hover;
+    -fx-text-fill: -fx-primary;
+}
+
+.root.matrix-mode .mini-ventana {
+    -fx-background-color: -fx-bg-base;
+    -fx-border-color: -fx-border-subtle;
+}
+
+.root.matrix-mode .mini-ventana .btn-mini {
+    -fx-background-color: -fx-bg-surface;
+    -fx-border-color: -fx-border-subtle;
+    -fx-text-fill: -fx-text-secondary;
+}
+
+.root.matrix-mode .mini-ventana .btn-mini:hover {
+    -fx-background-color: -fx-primary;
+    -fx-border-color: -fx-primary;
+    -fx-text-fill: -fx-bg-base;
+}
+
+.root.matrix-mode .mini-ventana .barra-inferior {
+    -fx-background-color: -fx-bg-elevated;
+    -fx-border-color: -fx-border-subtle transparent transparent transparent;
+}
+
+.root.matrix-mode .mini-ventana .lbl-info {
+    -fx-text-fill: -fx-text-muted;
+}
+
+.root.matrix-mode .mini-ventana .btn-control {
+    -fx-text-fill: -fx-text-muted;
+}
+
+.root.matrix-mode .mini-ventana .btn-control:hover {
+    -fx-background-color: -fx-bg-hover;
+    -fx-text-fill: -fx-primary;
+}
+
+.root.matrix-mode .dev-text,
+.root.matrix-mode .dev-license {
+    -fx-text-fill: -fx-text-muted;
+}
+
+.root.matrix-mode .dev-signature-footer .separator .line {
+    -fx-border-color: rgba(0, 255, 65, 0.4);
+}
+
+/* ========================================
+   TEMA NORD (Azules árticos)
+   ======================================== */
+.root.nord-mode {
+    -fx-primary: #88c0d0;
+    -fx-primary-dark: #81a1c1;
+    -fx-primary-light: #8fbcbb;
+    -fx-secondary: #a3be8c;
+    -fx-secondary-dark: #b48ead;
+    -fx-bg-base: #2e3440;
+    -fx-bg-surface: #3b4252;
+    -fx-bg-elevated: #434c5e;
+    -fx-bg-hover: #4c566a;
+    -fx-border-subtle: #4c566a;
+    -fx-border-medium: #81a1c1;
+    -fx-border-accent: #88c0d0;
+    -fx-text-primary: #e5e9f0;
+    -fx-text-secondary: #d8dee9;
+    -fx-text-muted: #a6b7c9;
+    -fx-success: #a3be8c;
+    -fx-warning: #ebcb8b;
+    -fx-error: #bf616a;
+    -fx-info: #88c0d0;
+    -fx-shadow-sm: dropshadow(gaussian, rgba(0,0,0,0.3), 4, 0, 0, 1);
+    -fx-shadow-md: dropshadow(gaussian, rgba(0,0,0,0.4), 8, 0, 0, 2);
+}
+
+.root.nord-mode .text-field,
+.root.nord-mode .text-area,
+.root.nord-mode .combo-box,
+.root.nord-mode #searchField {
+    -fx-background-color: -fx-bg-surface;
+    -fx-text-fill: -fx-text-primary;
+    -fx-prompt-text-fill: -fx-text-muted;
+    -fx-border-color: -fx-border-medium;
+}
+
+.root.nord-mode .text-area .content {
+    -fx-background-color: -fx-bg-surface;
+}
+
+.root.nord-mode .date-picker,
+.root.nord-mode .date-picker .text-field,
+.root.nord-mode .date-picker .arrow-button {
+    -fx-background-color: -fx-bg-surface;
+    -fx-text-fill: -fx-text-primary;
+    -fx-border-color: -fx-border-medium;
+}
+
+.root.nord-mode .date-picker:focused {
+    -fx-border-color: -fx-primary;
+}
+
+.root.nord-mode .date-picker-popup {
+    -fx-background-color: -fx-bg-surface;
+    -fx-border-color: -fx-primary;
+}
+
+.root.nord-mode .date-picker-popup > .month-year-pane {
+    -fx-background-color: -fx-bg-elevated;
+}
+
+.root.nord-mode .date-picker-popup .day-cell {
+    -fx-background-color: -fx-bg-surface;
+    -fx-text-fill: -fx-text-primary;
+}
+
+.root.nord-mode .date-picker-popup .day-cell:hover {
+    -fx-background-color: -fx-bg-hover;
+    -fx-text-fill: -fx-primary;
+}
+
+.root.nord-mode .date-picker-popup .selected {
+    -fx-background-color: -fx-primary;
+    -fx-text-fill: -fx-bg-base;
+}
+
+.root.nord-mode .btn-conectar,
+.root.nord-mode .btn-search,
+.root.nord-mode #btnSeleccionarRepositorio,
+.root.nord-mode .btn-backup {
+    -fx-background-color: -fx-primary;
+    -fx-text-fill: -fx-bg-base;
+}
+
+.root.nord-mode .btn-conectar:hover,
+.root.nord-mode .btn-search:hover,
+.root.nord-mode #btnSeleccionarRepositorio:hover,
+.root.nord-mode .btn-backup:hover {
+    -fx-background-color: -fx-primary-dark;
+}
+
+.root.nord-mode .btn-logs,
+.root.nord-mode .btn-crud,
+.root.nord-mode .btn-nav,
+.root.nord-mode .btn-restore {
+    -fx-text-fill: -fx-primary;
+    -fx-border-color: -fx-primary;
+}
+
+.root.nord-mode .btn-logs:hover,
+.root.nord-mode .btn-crud:hover,
+.root.nord-mode .btn-nav:hover,
+.root.nord-mode .btn-restore:hover {
+    -fx-background-color: -fx-primary;
+    -fx-text-fill: -fx-bg-base;
+}
+
+.root.nord-mode .btn-danger,
+.root.nord-mode .btn-cerrar {
+    -fx-text-fill: -fx-error;
+    -fx-border-color: -fx-error;
+}
+
+.root.nord-mode .btn-danger:hover,
+.root.nord-mode .btn-cerrar:hover {
+    -fx-background-color: -fx-error;
+    -fx-text-fill: -fx-bg-base;
+}
+
+.root.nord-mode .btn-theme,
+.root.nord-mode #btnCambiarPassword {
+    -fx-text-fill: -fx-text-muted;
+}
+
+.root.nord-mode .btn-theme:hover,
+.root.nord-mode #btnCambiarPassword:hover {
+    -fx-background-color: rgba(136, 192, 208, 0.2);
+    -fx-border-color: -fx-primary;
+    -fx-text-fill: -fx-primary;
+}
+
+.root.nord-mode .table-view .column-header-background {
+    -fx-background-color: -fx-bg-elevated;
+}
+
+.root.nord-mode .table-view .table-row-cell {
+    -fx-background-color: -fx-bg-surface;
+}
+
+.root.nord-mode .table-view .table-row-cell:odd {
+    -fx-background-color: -fx-bg-base;
+}
+
+.root.nord-mode .table-view .table-row-cell:hover {
+    -fx-background-color: -fx-bg-hover;
+}
+
+.root.nord-mode .table-view .table-row-cell:selected {
+    -fx-background-color: -fx-primary;
+}
+
+.root.nord-mode .table-view .table-row-cell:selected .table-cell {
+    -fx-text-fill: -fx-bg-base;
+}
+
+.root.nord-mode .chip-historial,
+.root.nord-mode #historialPane .button {
+    -fx-background-color: -fx-bg-elevated;
+    -fx-text-fill: -fx-primary-light;
+    -fx-border-color: -fx-border-medium;
+}
+
+.root.nord-mode .chip-historial:hover,
+.root.nord-mode #historialPane .button:hover {
+    -fx-background-color: -fx-primary;
+    -fx-text-fill: -fx-bg-base;
+    -fx-border-color: -fx-primary;
+}
+
+.root.nord-mode .logs {
+    -fx-background-color: -fx-bg-surface;
+    -fx-text-fill: -fx-text-primary;
+    -fx-border-color: -fx-border-medium;
+}
+
+.root.nord-mode .logs-error {
+    -fx-background-color: rgba(191, 97, 106, 0.2);
+    -fx-border-color: -fx-error;
+}
+
+.root.nord-mode .logs-success {
+    -fx-background-color: rgba(163, 190, 140, 0.2);
+    -fx-border-color: -fx-success;
+}
+
+.root.nord-mode .context-menu {
+    -fx-background-color: -fx-bg-surface;
+    -fx-border-color: -fx-border-medium;
+}
+
+.root.nord-mode .menu-item .label {
+    -fx-text-fill: -fx-text-primary;
+}
+
+.root.nord-mode .menu-item:focused {
+    -fx-background-color: -fx-primary;
+}
+
+.root.nord-mode .menu-item:focused .label {
+    -fx-text-fill: -fx-bg-base;
+}
+
+.root.nord-mode .dialog-pane {
+    -fx-background-color: -fx-bg-surface;
+    -fx-border-color: -fx-primary;
+}
+
+.root.nord-mode .dialog-pane .header-panel {
+    -fx-background-color: -fx-bg-elevated;
+}
+
+.root.nord-mode .dialog-pane .header-panel .label {
+    -fx-text-fill: -fx-text-primary;
+}
+
+.root.nord-mode .dialog-pane .content.label {
+    -fx-text-fill: -fx-text-secondary;
+}
+
+.root.nord-mode .dialog-pane .button {
+    -fx-text-fill: -fx-primary;
+    -fx-border-color: -fx-primary;
+}
+
+.root.nord-mode .dialog-pane .button:hover {
+    -fx-background-color: -fx-primary;
+    -fx-text-fill: -fx-bg-base;
+}
+
+.root.nord-mode .scroll-bar .thumb {
+    -fx-background-color: -fx-border-medium;
+}
+
+.root.nord-mode .scroll-bar .thumb:hover {
+    -fx-background-color: -fx-primary;
+}
+
+.root.nord-mode .scroll-bar .track {
+    -fx-background-color: -fx-bg-elevated;
+    -fx-border-color: -fx-border-subtle;
+}
+
+.root.nord-mode .scroll-bar .increment-button,
+.root.nord-mode .scroll-bar .decrement-button {
+    -fx-background-color: -fx-bg-elevated;
+    -fx-text-fill: -fx-text-muted;
+}
+
+.root.nord-mode .scroll-bar .increment-button:hover,
+.root.nord-mode .scroll-bar .decrement-button:hover {
+    -fx-background-color: -fx-bg-hover;
+    -fx-text-fill: -fx-primary;
+}
+
+.root.nord-mode .mini-ventana {
+    -fx-background-color: -fx-bg-base;
+    -fx-border-color: -fx-border-subtle;
+}
+
+.root.nord-mode .mini-ventana .btn-mini {
+    -fx-background-color: -fx-bg-surface;
+    -fx-border-color: -fx-border-subtle;
+    -fx-text-fill: -fx-text-secondary;
+}
+
+.root.nord-mode .mini-ventana .btn-mini:hover {
+    -fx-background-color: -fx-primary;
+    -fx-border-color: -fx-primary;
+    -fx-text-fill: -fx-bg-base;
+}
+
+.root.nord-mode .mini-ventana .barra-inferior {
+    -fx-background-color: -fx-bg-elevated;
+    -fx-border-color: -fx-border-subtle transparent transparent transparent;
+}
+
+.root.nord-mode .mini-ventana .lbl-info {
+    -fx-text-fill: -fx-text-muted;
+}
+
+.root.nord-mode .mini-ventana .btn-control {
+    -fx-text-fill: -fx-text-muted;
+}
+
+.root.nord-mode .mini-ventana .btn-control:hover {
+    -fx-background-color: -fx-bg-hover;
+    -fx-text-fill: -fx-primary;
+}
+
+.root.nord-mode .dev-text,
+.root.nord-mode .dev-license {
+    -fx-text-fill: -fx-text-muted;
+}
+
+.root.nord-mode .dev-signature-footer .separator .line {
+    -fx-border-color: rgba(136, 192, 208, 0.4);
+}
+
+/* ========================================
+   TEMA SUNSET (Cálidos, retro)
+   ======================================== */
+.root.sunset-mode {
+    -fx-primary: #e07a5f;
+    -fx-primary-dark: #d06b4f;
+    -fx-primary-light: #f2a65a;
+    -fx-secondary: #f4a261;
+    -fx-secondary-dark: #e76f51;
+    -fx-bg-base: #2b1b17;
+    -fx-bg-surface: #3d2b24;
+    -fx-bg-elevated: #4a342b;
+    -fx-bg-hover: #5a4036;
+    -fx-border-subtle: #5a4036;
+    -fx-border-medium: #b5835a;
+    -fx-border-accent: #e07a5f;
+    -fx-text-primary: #f5d6b8;
+    -fx-text-secondary: #e8c4a0;
+    -fx-text-muted: #b58a72;
+    -fx-success: #a3be8c;
+    -fx-warning: #f2a65a;
+    -fx-error: #e07a5f;
+    -fx-info: #88c0d0;
+    -fx-shadow-sm: dropshadow(gaussian, rgba(0,0,0,0.5), 4, 0, 0, 1);
+    -fx-shadow-md: dropshadow(gaussian, rgba(0,0,0,0.6), 8, 0, 0, 2);
+}
+
+.root.sunset-mode .text-field,
+.root.sunset-mode .text-area,
+.root.sunset-mode .combo-box,
+.root.sunset-mode #searchField {
+    -fx-background-color: -fx-bg-surface;
+    -fx-text-fill: -fx-text-primary;
+    -fx-prompt-text-fill: -fx-text-muted;
+    -fx-border-color: -fx-border-medium;
+}
+
+.root.sunset-mode .text-area .content {
+    -fx-background-color: -fx-bg-surface;
+}
+
+.root.sunset-mode .date-picker,
+.root.sunset-mode .date-picker .text-field,
+.root.sunset-mode .date-picker .arrow-button {
+    -fx-background-color: -fx-bg-surface;
+    -fx-text-fill: -fx-text-primary;
+    -fx-border-color: -fx-border-medium;
+}
+
+.root.sunset-mode .date-picker:focused {
+    -fx-border-color: -fx-primary;
+}
+
+.root.sunset-mode .date-picker-popup {
+    -fx-background-color: -fx-bg-surface;
+    -fx-border-color: -fx-primary;
+}
+
+.root.sunset-mode .date-picker-popup > .month-year-pane {
+    -fx-background-color: -fx-bg-elevated;
+}
+
+.root.sunset-mode .date-picker-popup .day-cell {
+    -fx-background-color: -fx-bg-surface;
+    -fx-text-fill: -fx-text-primary;
+}
+
+.root.sunset-mode .date-picker-popup .day-cell:hover {
+    -fx-background-color: -fx-bg-hover;
+    -fx-text-fill: -fx-primary;
+}
+
+.root.sunset-mode .date-picker-popup .selected {
+    -fx-background-color: -fx-primary;
+    -fx-text-fill: -fx-bg-base;
+}
+
+.root.sunset-mode .btn-conectar,
+.root.sunset-mode .btn-search,
+.root.sunset-mode #btnSeleccionarRepositorio,
+.root.sunset-mode .btn-backup {
+    -fx-background-color: -fx-primary;
+    -fx-text-fill: -fx-bg-base;
+}
+
+.root.sunset-mode .btn-conectar:hover,
+.root.sunset-mode .btn-search:hover,
+.root.sunset-mode #btnSeleccionarRepositorio:hover,
+.root.sunset-mode .btn-backup:hover {
+    -fx-background-color: -fx-primary-dark;
+}
+
+.root.sunset-mode .btn-logs,
+.root.sunset-mode .btn-crud,
+.root.sunset-mode .btn-nav,
+.root.sunset-mode .btn-restore {
+    -fx-text-fill: -fx-primary;
+    -fx-border-color: -fx-primary;
+}
+
+.root.sunset-mode .btn-logs:hover,
+.root.sunset-mode .btn-crud:hover,
+.root.sunset-mode .btn-nav:hover,
+.root.sunset-mode .btn-restore:hover {
+    -fx-background-color: -fx-primary;
+    -fx-text-fill: -fx-bg-base;
+}
+
+.root.sunset-mode .btn-danger,
+.root.sunset-mode .btn-cerrar {
+    -fx-text-fill: -fx-error;
+    -fx-border-color: -fx-error;
+}
+
+.root.sunset-mode .btn-danger:hover,
+.root.sunset-mode .btn-cerrar:hover {
+    -fx-background-color: -fx-error;
+    -fx-text-fill: -fx-bg-base;
+}
+
+.root.sunset-mode .btn-theme,
+.root.sunset-mode #btnCambiarPassword {
+    -fx-text-fill: -fx-text-muted;
+}
+
+.root.sunset-mode .btn-theme:hover,
+.root.sunset-mode #btnCambiarPassword:hover {
+    -fx-background-color: rgba(224, 122, 95, 0.2);
+    -fx-border-color: -fx-primary;
+    -fx-text-fill: -fx-primary;
+}
+
+.root.sunset-mode .table-view .column-header-background {
+    -fx-background-color: -fx-bg-elevated;
+}
+
+.root.sunset-mode .table-view .table-row-cell {
+    -fx-background-color: -fx-bg-surface;
+}
+
+.root.sunset-mode .table-view .table-row-cell:odd {
+    -fx-background-color: -fx-bg-base;
+}
+
+.root.sunset-mode .table-view .table-row-cell:hover {
+    -fx-background-color: -fx-bg-hover;
+}
+
+.root.sunset-mode .table-view .table-row-cell:selected {
+    -fx-background-color: -fx-primary;
+}
+
+.root.sunset-mode .table-view .table-row-cell:selected .table-cell {
+    -fx-text-fill: -fx-bg-base;
+}
+
+.root.sunset-mode .chip-historial,
+.root.sunset-mode #historialPane .button {
+    -fx-background-color: -fx-bg-elevated;
+    -fx-text-fill: -fx-primary-light;
+    -fx-border-color: -fx-border-medium;
+}
+
+.root.sunset-mode .chip-historial:hover,
+.root.sunset-mode #historialPane .button:hover {
+    -fx-background-color: -fx-primary;
+    -fx-text-fill: -fx-bg-base;
+    -fx-border-color: -fx-primary;
+}
+
+.root.sunset-mode .logs {
+    -fx-background-color: -fx-bg-surface;
+    -fx-text-fill: -fx-text-primary;
+    -fx-border-color: -fx-border-medium;
+}
+
+.root.sunset-mode .logs-error {
+    -fx-background-color: rgba(224, 122, 95, 0.2);
+    -fx-border-color: -fx-error;
+}
+
+.root.sunset-mode .logs-success {
+    -fx-background-color: rgba(163, 190, 140, 0.2);
+    -fx-border-color: -fx-success;
+}
+
+.root.sunset-mode .context-menu {
+    -fx-background-color: -fx-bg-surface;
+    -fx-border-color: -fx-border-medium;
+}
+
+.root.sunset-mode .menu-item .label {
+    -fx-text-fill: -fx-text-primary;
+}
+
+.root.sunset-mode .menu-item:focused {
+    -fx-background-color: -fx-primary;
+}
+
+.root.sunset-mode .menu-item:focused .label {
+    -fx-text-fill: -fx-bg-base;
+}
+
+.root.sunset-mode .dialog-pane {
+    -fx-background-color: -fx-bg-surface;
+    -fx-border-color: -fx-primary;
+}
+
+.root.sunset-mode .dialog-pane .header-panel {
+    -fx-background-color: -fx-bg-elevated;
+}
+
+.root.sunset-mode .dialog-pane .header-panel .label {
+    -fx-text-fill: -fx-text-primary;
+}
+
+.root.sunset-mode .dialog-pane .content.label {
+    -fx-text-fill: -fx-text-secondary;
+}
+
+.root.sunset-mode .dialog-pane .button {
+    -fx-text-fill: -fx-primary;
+    -fx-border-color: -fx-primary;
+}
+
+.root.sunset-mode .dialog-pane .button:hover {
+    -fx-background-color: -fx-primary;
+    -fx-text-fill: -fx-bg-base;
+}
+
+.root.sunset-mode .scroll-bar .thumb {
+    -fx-background-color: -fx-border-medium;
+}
+
+.root.sunset-mode .scroll-bar .thumb:hover {
+    -fx-background-color: -fx-primary;
+}
+
+.root.sunset-mode .scroll-bar .track {
+    -fx-background-color: -fx-bg-elevated;
+    -fx-border-color: -fx-border-subtle;
+}
+
+.root.sunset-mode .scroll-bar .increment-button,
+.root.sunset-mode .scroll-bar .decrement-button {
+    -fx-background-color: -fx-bg-elevated;
+    -fx-text-fill: -fx-text-muted;
+}
+
+.root.sunset-mode .scroll-bar .increment-button:hover,
+.root.sunset-mode .scroll-bar .decrement-button:hover {
+    -fx-background-color: -fx-bg-hover;
+    -fx-text-fill: -fx-primary;
+}
+
+.root.sunset-mode .mini-ventana {
+    -fx-background-color: -fx-bg-base;
+    -fx-border-color: -fx-border-subtle;
+}
+
+.root.sunset-mode .mini-ventana .btn-mini {
+    -fx-background-color: -fx-bg-surface;
+    -fx-border-color: -fx-border-subtle;
+    -fx-text-fill: -fx-text-secondary;
+}
+
+.root.sunset-mode .mini-ventana .btn-mini:hover {
+    -fx-background-color: -fx-primary;
+    -fx-border-color: -fx-primary;
+    -fx-text-fill: -fx-bg-base;
+}
+
+.root.sunset-mode .mini-ventana .barra-inferior {
+    -fx-background-color: -fx-bg-elevated;
+    -fx-border-color: -fx-border-subtle transparent transparent transparent;
+}
+
+.root.sunset-mode .mini-ventana .lbl-info {
+    -fx-text-fill: -fx-text-muted;
+}
+
+.root.sunset-mode .mini-ventana .btn-control {
+    -fx-text-fill: -fx-text-muted;
+}
+
+.root.sunset-mode .mini-ventana .btn-control:hover {
+    -fx-background-color: -fx-bg-hover;
+    -fx-text-fill: -fx-primary;
+}
+
+.root.sunset-mode .dev-text,
+.root.sunset-mode .dev-license {
+    -fx-text-fill: -fx-text-muted;
+}
+
+.root.sunset-mode .dev-signature-footer .separator .line {
+    -fx-border-color: rgba(224, 122, 95, 0.4);
+}
+
+/* ========================================
+   TEMA AZUL (Inspirado en "Cuarto Azul" de Aitana)
+   ======================================== */
+.root.azul-mode {
+    -fx-primary: #64ffda;
+    -fx-primary-dark: #4a9eff;
+    -fx-primary-light: #88d8ff;
+    -fx-secondary: #4a9eff;
+    -fx-secondary-dark: #1e6faf;
+    -fx-bg-base: #0a192f;
+    -fx-bg-surface: #112240;
+    -fx-bg-elevated: #1a365d;
+    -fx-bg-hover: #233b6b;
+    -fx-border-subtle: #233b6b;
+    -fx-border-medium: #4a9eff;
+    -fx-border-accent: #64ffda;
+    -fx-text-primary: #ccd6f6;
+    -fx-text-secondary: #8892b0;
+    -fx-text-muted: #4a5a7a;
+    -fx-success: #64ffda;
+    -fx-warning: #f2a65a;
+    -fx-error: #ff6b6b;
+    -fx-info: #4a9eff;
+    -fx-shadow-sm: dropshadow(gaussian, rgba(0,0,0,0.4), 4, 0, 0, 1);
+    -fx-shadow-md: dropshadow(gaussian, rgba(0,0,0,0.5), 8, 0, 0, 2);
+}
+
+.root.azul-mode .text-field,
+.root.azul-mode .text-area,
+.root.azul-mode .combo-box,
+.root.azul-mode #searchField {
+    -fx-background-color: -fx-bg-surface;
+    -fx-text-fill: -fx-text-primary;
+    -fx-prompt-text-fill: -fx-text-muted;
+    -fx-border-color: -fx-border-medium;
+}
+
+.root.azul-mode .text-area .content {
+    -fx-background-color: -fx-bg-surface;
+}
+
+.root.azul-mode .date-picker,
+.root.azul-mode .date-picker .text-field,
+.root.azul-mode .date-picker .arrow-button {
+    -fx-background-color: -fx-bg-surface;
+    -fx-text-fill: -fx-text-primary;
+    -fx-border-color: -fx-border-medium;
+}
+
+.root.azul-mode .date-picker:focused {
+    -fx-border-color: -fx-primary;
+}
+
+.root.azul-mode .date-picker-popup {
+    -fx-background-color: -fx-bg-surface;
+    -fx-border-color: -fx-primary;
+}
+
+.root.azul-mode .date-picker-popup > .month-year-pane {
+    -fx-background-color: -fx-bg-elevated;
+}
+
+.root.azul-mode .date-picker-popup .day-cell {
+    -fx-background-color: -fx-bg-surface;
+    -fx-text-fill: -fx-text-primary;
+}
+
+.root.azul-mode .date-picker-popup .day-cell:hover {
+    -fx-background-color: -fx-bg-hover;
+    -fx-text-fill: -fx-primary;
+}
+
+.root.azul-mode .date-picker-popup .selected {
+    -fx-background-color: -fx-primary;
+    -fx-text-fill: -fx-bg-base;
+}
+
+.root.azul-mode .btn-conectar,
+.root.azul-mode .btn-search,
+.root.azul-mode #btnSeleccionarRepositorio,
+.root.azul-mode .btn-backup {
+    -fx-background-color: -fx-primary;
+    -fx-text-fill: -fx-bg-base;
+}
+
+.root.azul-mode .btn-conectar:hover,
+.root.azul-mode .btn-search:hover,
+.root.azul-mode #btnSeleccionarRepositorio:hover,
+.root.azul-mode .btn-backup:hover {
+    -fx-background-color: -fx-primary-dark;
+}
+
+.root.azul-mode .btn-logs,
+.root.azul-mode .btn-crud,
+.root.azul-mode .btn-nav,
+.root.azul-mode .btn-restore {
+    -fx-text-fill: -fx-primary;
+    -fx-border-color: -fx-primary;
+}
+
+.root.azul-mode .btn-logs:hover,
+.root.azul-mode .btn-crud:hover,
+.root.azul-mode .btn-nav:hover,
+.root.azul-mode .btn-restore:hover {
+    -fx-background-color: -fx-primary;
+    -fx-text-fill: -fx-bg-base;
+}
+
+.root.azul-mode .btn-danger,
+.root.azul-mode .btn-cerrar {
+    -fx-text-fill: -fx-error;
+    -fx-border-color: -fx-error;
+}
+
+.root.azul-mode .btn-danger:hover,
+.root.azul-mode .btn-cerrar:hover {
+    -fx-background-color: -fx-error;
+    -fx-text-fill: -fx-bg-base;
+}
+
+.root.azul-mode .btn-theme,
+.root.azul-mode #btnCambiarPassword {
+    -fx-text-fill: -fx-text-muted;
+}
+
+.root.azul-mode .btn-theme:hover,
+.root.azul-mode #btnCambiarPassword:hover {
+    -fx-background-color: rgba(100, 255, 218, 0.15);
+    -fx-border-color: -fx-primary;
+    -fx-text-fill: -fx-primary;
+}
+
+.root.azul-mode .table-view .column-header-background {
+    -fx-background-color: -fx-bg-elevated;
+}
+
+.root.azul-mode .table-view .table-row-cell {
+    -fx-background-color: -fx-bg-surface;
+}
+
+.root.azul-mode .table-view .table-row-cell:odd {
+    -fx-background-color: -fx-bg-base;
+}
+
+.root.azul-mode .table-view .table-row-cell:hover {
+    -fx-background-color: -fx-bg-hover;
+}
+
+.root.azul-mode .table-view .table-row-cell:selected {
+    -fx-background-color: -fx-primary;
+}
+
+.root.azul-mode .table-view .table-row-cell:selected .table-cell {
+    -fx-text-fill: -fx-bg-base;
+}
+
+.root.azul-mode .chip-historial,
+.root.azul-mode #historialPane .button {
+    -fx-background-color: -fx-bg-elevated;
+    -fx-text-fill: -fx-primary-light;
+    -fx-border-color: -fx-border-medium;
+}
+
+.root.azul-mode .chip-historial:hover,
+.root.azul-mode #historialPane .button:hover {
+    -fx-background-color: -fx-primary;
+    -fx-text-fill: -fx-bg-base;
+    -fx-border-color: -fx-primary;
+}
+
+.root.azul-mode .logs {
+    -fx-background-color: -fx-bg-surface;
+    -fx-text-fill: -fx-text-primary;
+    -fx-border-color: -fx-border-medium;
+}
+
+.root.azul-mode .logs-error {
+    -fx-background-color: rgba(255, 107, 107, 0.15);
+    -fx-border-color: -fx-error;
+}
+
+.root.azul-mode .logs-success {
+    -fx-background-color: rgba(100, 255, 218, 0.15);
+    -fx-border-color: -fx-success;
+}
+
+.root.azul-mode .context-menu {
+    -fx-background-color: -fx-bg-surface;
+    -fx-border-color: -fx-border-medium;
+}
+
+.root.azul-mode .menu-item .label {
+    -fx-text-fill: -fx-text-primary;
+}
+
+.root.azul-mode .menu-item:focused {
+    -fx-background-color: -fx-primary;
+}
+
+.root.azul-mode .menu-item:focused .label {
+    -fx-text-fill: -fx-bg-base;
+}
+
+.root.azul-mode .dialog-pane {
+    -fx-background-color: -fx-bg-surface;
+    -fx-border-color: -fx-primary;
+}
+
+.root.azul-mode .dialog-pane .header-panel {
+    -fx-background-color: -fx-bg-elevated;
+}
+
+.root.azul-mode .dialog-pane .header-panel .label {
+    -fx-text-fill: -fx-text-primary;
+}
+
+.root.azul-mode .dialog-pane .content.label {
+    -fx-text-fill: -fx-text-secondary;
+}
+
+.root.azul-mode .dialog-pane .button {
+    -fx-text-fill: -fx-primary;
+    -fx-border-color: -fx-primary;
+}
+
+.root.azul-mode .dialog-pane .button:hover {
+    -fx-background-color: -fx-primary;
+    -fx-text-fill: -fx-bg-base;
+}
+
+.root.azul-mode .scroll-bar .thumb {
+    -fx-background-color: -fx-border-medium;
+}
+
+.root.azul-mode .scroll-bar .thumb:hover {
+    -fx-background-color: -fx-primary;
+}
+
+.root.azul-mode .scroll-bar .track {
+    -fx-background-color: -fx-bg-elevated;
+    -fx-border-color: -fx-border-subtle;
+}
+
+.root.azul-mode .scroll-bar .increment-button,
+.root.azul-mode .scroll-bar .decrement-button {
+    -fx-background-color: -fx-bg-elevated;
+    -fx-text-fill: -fx-text-muted;
+}
+
+.root.azul-mode .scroll-bar .increment-button:hover,
+.root.azul-mode .scroll-bar .decrement-button:hover {
+    -fx-background-color: -fx-bg-hover;
+    -fx-text-fill: -fx-primary;
+}
+
+.root.azul-mode .mini-ventana {
+    -fx-background-color: -fx-bg-base;
+    -fx-border-color: -fx-border-subtle;
+}
+
+.root.azul-mode .mini-ventana .btn-mini {
+    -fx-background-color: -fx-bg-surface;
+    -fx-border-color: -fx-border-subtle;
+    -fx-text-fill: -fx-text-secondary;
+}
+
+.root.azul-mode .mini-ventana .btn-mini:hover {
+    -fx-background-color: -fx-primary;
+    -fx-border-color: -fx-primary;
+    -fx-text-fill: -fx-bg-base;
+}
+
+.root.azul-mode .mini-ventana .barra-inferior {
+    -fx-background-color: -fx-bg-elevated;
+    -fx-border-color: -fx-border-subtle transparent transparent transparent;
+}
+
+.root.azul-mode .mini-ventana .lbl-info {
+    -fx-text-fill: -fx-text-muted;
+}
+
+.root.azul-mode .mini-ventana .btn-control {
+    -fx-text-fill: -fx-text-muted;
+}
+
+.root.azul-mode .mini-ventana .btn-control:hover {
+    -fx-background-color: -fx-bg-hover;
+    -fx-text-fill: -fx-primary;
+}
+
+.root.azul-mode .dev-text,
+.root.azul-mode .dev-license {
+    -fx-text-fill: -fx-text-muted;
+}
+
+.root.azul-mode .dev-signature-footer .separator .line {
+    -fx-border-color: rgba(100, 255, 218, 0.4);
+}
+
+/* ========================================
+   TEMA ALPHA (Aitana - sin neón)
+   ======================================== */
+.root.alpha-mode {
+    -fx-primary: #00f0ff;
+    -fx-primary-dark: #00c8d4;
+    -fx-primary-light: #66f5ff;
+    -fx-secondary: #ff2d95;
+    -fx-secondary-dark: #cc0070;
+    -fx-bg-base: #0a0e1a;
+    -fx-bg-surface: #141c2e;
+    -fx-bg-elevated: #1e2840;
+    -fx-bg-hover: #2a3a5a;
+    -fx-border-subtle: #2a3a5a;
+    -fx-border-medium: #4a6a9a;
+    -fx-border-accent: #00f0ff;
+    -fx-text-primary: #e8f0fe;
+    -fx-text-secondary: #b0c4e8;
+    -fx-text-muted: #6a7f9a;
+    -fx-success: #00f0ff;
+    -fx-warning: #ff2d95;
+    -fx-error: #ff4d6a;
+    -fx-info: #00f0ff;
+    -fx-shadow-sm: dropshadow(gaussian, rgba(0,0,0,0.5), 4, 0, 0, 1);
+    -fx-shadow-md: dropshadow(gaussian, rgba(0,0,0,0.7), 8, 0, 0, 2);
+}
+
+.root.alpha-mode .text-field,
+.root.alpha-mode .text-area,
+.root.alpha-mode .combo-box,
+.root.alpha-mode #searchField {
+    -fx-background-color: -fx-bg-surface;
+    -fx-text-fill: -fx-text-primary;
+    -fx-prompt-text-fill: -fx-text-muted;
+    -fx-border-color: -fx-border-medium;
+}
+
+.root.alpha-mode .text-area .content {
+    -fx-background-color: -fx-bg-surface;
+}
+
+.root.alpha-mode .date-picker,
+.root.alpha-mode .date-picker .text-field,
+.root.alpha-mode .date-picker .arrow-button {
+    -fx-background-color: -fx-bg-surface;
+    -fx-text-fill: -fx-text-primary;
+    -fx-border-color: -fx-border-medium;
+}
+
+.root.alpha-mode .date-picker:focused {
+    -fx-border-color: -fx-primary;
+    -fx-effect: -fx-shadow-sm;
+}
+
+.root.alpha-mode .date-picker-popup {
+    -fx-background-color: -fx-bg-surface;
+    -fx-border-color: -fx-primary;
+}
+
+.root.alpha-mode .date-picker-popup > .month-year-pane {
+    -fx-background-color: -fx-bg-elevated;
+}
+
+.root.alpha-mode .date-picker-popup .day-cell {
+    -fx-background-color: -fx-bg-surface;
+    -fx-text-fill: -fx-text-primary;
+}
+
+.root.alpha-mode .date-picker-popup .day-cell:hover {
+    -fx-background-color: -fx-bg-hover;
+    -fx-text-fill: -fx-primary;
+}
+
+.root.alpha-mode .date-picker-popup .selected {
+    -fx-background-color: -fx-primary;
+    -fx-text-fill: -fx-bg-base;
+}
+
+.root.alpha-mode .btn-conectar,
+.root.alpha-mode .btn-search,
+.root.alpha-mode #btnSeleccionarRepositorio,
+.root.alpha-mode .btn-backup {
+    -fx-background-color: -fx-primary;
+    -fx-text-fill: -fx-bg-base;
+    -fx-effect: -fx-shadow-sm;
+}
+
+.root.alpha-mode .btn-conectar:hover,
+.root.alpha-mode .btn-search:hover,
+.root.alpha-mode #btnSeleccionarRepositorio:hover,
+.root.alpha-mode .btn-backup:hover {
+    -fx-background-color: -fx-primary-dark;
+    -fx-effect: -fx-shadow-md;
+}
+
+.root.alpha-mode .btn-logs,
+.root.alpha-mode .btn-crud,
+.root.alpha-mode .btn-nav,
+.root.alpha-mode .btn-restore {
+    -fx-text-fill: -fx-primary;
+    -fx-border-color: -fx-primary;
+}
+
+.root.alpha-mode .btn-logs:hover,
+.root.alpha-mode .btn-crud:hover,
+.root.alpha-mode .btn-nav:hover,
+.root.alpha-mode .btn-restore:hover {
+    -fx-background-color: -fx-primary;
+    -fx-text-fill: -fx-bg-base;
+}
+
+.root.alpha-mode .btn-danger,
+.root.alpha-mode .btn-cerrar {
+    -fx-text-fill: -fx-error;
+    -fx-border-color: -fx-error;
+}
+
+.root.alpha-mode .btn-danger:hover,
+.root.alpha-mode .btn-cerrar:hover {
+    -fx-background-color: -fx-error;
+    -fx-text-fill: -fx-bg-base;
+}
+
+.root.alpha-mode .btn-theme,
+.root.alpha-mode #btnCambiarPassword {
+    -fx-text-fill: -fx-text-muted;
+}
+
+.root.alpha-mode .btn-theme:hover,
+.root.alpha-mode #btnCambiarPassword:hover {
+    -fx-background-color: rgba(0, 240, 255, 0.15);
+    -fx-border-color: -fx-primary;
+    -fx-text-fill: -fx-primary;
+}
+
+.root.alpha-mode .table-view .column-header-background {
+    -fx-background-color: -fx-bg-elevated;
+}
+
+.root.alpha-mode .table-view .table-row-cell {
+    -fx-background-color: -fx-bg-surface;
+}
+
+.root.alpha-mode .table-view .table-row-cell:odd {
+    -fx-background-color: -fx-bg-base;
+}
+
+.root.alpha-mode .table-view .table-row-cell:hover {
+    -fx-background-color: -fx-bg-hover;
+}
+
+.root.alpha-mode .table-view .table-row-cell:selected {
+    -fx-background-color: -fx-primary;
+}
+
+.root.alpha-mode .table-view .table-row-cell:selected .table-cell {
+    -fx-text-fill: -fx-bg-base;
+}
+
+.root.alpha-mode .chip-historial,
+.root.alpha-mode #historialPane .button {
+    -fx-background-color: -fx-bg-elevated;
+    -fx-text-fill: -fx-primary;
+    -fx-border-color: -fx-border-medium;
+}
+
+.root.alpha-mode .chip-historial:hover,
+.root.alpha-mode #historialPane .button:hover {
+    -fx-background-color: -fx-primary;
+    -fx-text-fill: -fx-bg-base;
+    -fx-border-color: -fx-primary;
+}
+
+.root.alpha-mode .logs {
+    -fx-background-color: -fx-bg-surface;
+    -fx-text-fill: -fx-text-primary;
+    -fx-border-color: -fx-border-medium;
+}
+
+.root.alpha-mode .logs-error {
+    -fx-background-color: rgba(255, 77, 106, 0.15);
+    -fx-border-color: -fx-error;
+}
+
+.root.alpha-mode .logs-success {
+    -fx-background-color: rgba(0, 240, 255, 0.15);
+    -fx-border-color: -fx-success;
+}
+
+.root.alpha-mode .context-menu {
+    -fx-background-color: -fx-bg-surface;
+    -fx-border-color: -fx-border-medium;
+}
+
+.root.alpha-mode .menu-item .label {
+    -fx-text-fill: -fx-text-primary;
+}
+
+.root.alpha-mode .menu-item:focused {
+    -fx-background-color: -fx-primary;
+}
+
+.root.alpha-mode .menu-item:focused .label {
+    -fx-text-fill: -fx-bg-base;
+}
+
+.root.alpha-mode .dialog-pane {
+    -fx-background-color: -fx-bg-surface;
+    -fx-border-color: -fx-primary;
+}
+
+.root.alpha-mode .dialog-pane .header-panel {
+    -fx-background-color: -fx-bg-elevated;
+}
+
+.root.alpha-mode .dialog-pane .header-panel .label {
+    -fx-text-fill: -fx-text-primary;
+}
+
+.root.alpha-mode .dialog-pane .content.label {
+    -fx-text-fill: -fx-text-secondary;
+}
+
+.root.alpha-mode .dialog-pane .button {
+    -fx-text-fill: -fx-primary;
+    -fx-border-color: -fx-primary;
+}
+
+.root.alpha-mode .dialog-pane .button:hover {
+    -fx-background-color: -fx-primary;
+    -fx-text-fill: -fx-bg-base;
+}
+
+.root.alpha-mode .scroll-bar .thumb {
+    -fx-background-color: -fx-border-medium;
+    -fx-border-color: -fx-border-subtle;
+}
+
+.root.alpha-mode .scroll-bar .thumb:hover {
+    -fx-background-color: -fx-primary;
+}
+
+.root.alpha-mode .scroll-bar .track {
+    -fx-background-color: -fx-bg-elevated;
+    -fx-border-color: -fx-border-subtle;
+}
+
+.root.alpha-mode .scroll-bar .increment-button,
+.root.alpha-mode .scroll-bar .decrement-button {
+    -fx-background-color: -fx-bg-elevated;
+    -fx-text-fill: -fx-text-muted;
+}
+
+.root.alpha-mode .scroll-bar .increment-button:hover,
+.root.alpha-mode .scroll-bar .decrement-button:hover {
+    -fx-background-color: -fx-bg-hover;
+    -fx-text-fill: -fx-primary;
+}
+
+.root.alpha-mode .mini-ventana {
+    -fx-background-color: -fx-bg-base;
+    -fx-border-color: -fx-border-subtle;
+}
+
+.root.alpha-mode .mini-ventana .btn-mini {
+    -fx-background-color: -fx-bg-surface;
+    -fx-border-color: -fx-border-subtle;
+    -fx-text-fill: -fx-text-secondary;
+}
+
+.root.alpha-mode .mini-ventana .btn-mini:hover {
+    -fx-background-color: -fx-primary;
+    -fx-border-color: -fx-primary;
+    -fx-text-fill: -fx-bg-base;
+}
+
+.root.alpha-mode .mini-ventana .barra-inferior {
+    -fx-background-color: -fx-bg-elevated;
+    -fx-border-color: -fx-border-subtle transparent transparent transparent;
+}
+
+.root.alpha-mode .mini-ventana .lbl-info {
+    -fx-text-fill: -fx-text-muted;
+}
+
+.root.alpha-mode .mini-ventana .btn-control {
+    -fx-text-fill: -fx-text-muted;
+}
+
+.root.alpha-mode .mini-ventana .btn-control:hover {
+    -fx-background-color: -fx-bg-hover;
+    -fx-text-fill: -fx-primary;
+}
+
+.root.alpha-mode .dev-text,
+.root.alpha-mode .dev-license {
+    -fx-text-fill: -fx-text-muted;
+}
+
+.root.alpha-mode .dev-signature-footer .separator .line {
+    -fx-border-color: rgba(0, 240, 255, 0.3);
+}

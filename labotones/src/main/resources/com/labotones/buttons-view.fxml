@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.labotones.SecondStatges.ButtonCRUDController"
+      stylesheets="@styles.css"
+      styleClass="contenedor"
+      spacing="10"
+      style="-fx-padding: 12;">
+
+    <!-- BARRA SUPERIOR -->
+    <HBox spacing="8" alignment="CENTER_RIGHT">
+        <Button fx:id="btnCambiarPassword" text="🔒" onAction="#cambiarPassword" styleClass="btn-theme"/>
+        <Button text="Volver" onAction="#volver" styleClass="btn-logs"/>
+    </HBox>
+
+    <!-- SECCIÓN REPOSITORIO -->
+    <HBox spacing="8" alignment="CENTER_LEFT" style="-fx-background-color: rgba(0,0,0,0.03); -fx-padding: 6 8; -fx-background-radius: 4;">
+        <Label text="📁 Repositorio:" style="-fx-font-weight: bold; -fx-font-size: 11px;"/>
+        <Label fx:id="lblRepositorio" text="No configurado" style="-fx-text-fill: #f39c12; -fx-font-size: 11px;" HBox.hgrow="ALWAYS"/>
+        <Region HBox.hgrow="ALWAYS" />
+        <Button fx:id="btnSeleccionarRepositorio" text="Seleccionar" onAction="#seleccionarRepositorio" style="-fx-font-size: 11px;"/>
+    </HBox>
+
+    <!-- VISTA DE DATOS -->
+    <TableView fx:id="table" VBox.vgrow="ALWAYS" prefHeight="160" style="-fx-font-size: 11px;">
+        <columns>
+            <TableColumn fx:id="colName" text="Nombre" prefWidth="130"/>
+            <TableColumn fx:id="colCategoria" text="Categoría" prefWidth="110"/>
+            <TableColumn fx:id="colDesc" text="Descripción" prefWidth="180"/>
+        </columns>
+        <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+        </columnResizePolicy>
+        <placeholder>
+            <Label text="Sin botones configurados" style="-fx-text-fill: #64748b; -fx-font-size: 11px;"/>
+        </placeholder>
+    </TableView>
+
+    <!-- FORMULARIO DE EDICIÓN -->
+    <GridPane hgap="8" vgap="6" style="-fx-padding: 4 0;">
+        <columnConstraints>
+            <ColumnConstraints percentWidth="15"/>
+            <ColumnConstraints percentWidth="35"/>
+            <ColumnConstraints percentWidth="15"/>
+            <ColumnConstraints percentWidth="35"/>
+        </columnConstraints>
+
+        <!-- Fila 0 -->
+        <Label text="Nombre:" GridPane.columnIndex="0" GridPane.rowIndex="0" style="-fx-font-size: 11px; -fx-font-weight: bold;"/>
+        <TextField fx:id="fieldName" promptText="Nombre *" GridPane.columnIndex="1" GridPane.rowIndex="0" style="-fx-font-size: 11px;"/>
+        
+        <Label text="Descripción:" GridPane.columnIndex="2" GridPane.rowIndex="0" style="-fx-font-size: 11px; -fx-font-weight: bold;"/>
+        <TextField fx:id="fieldDesc" promptText="Descripción" GridPane.columnIndex="3" GridPane.rowIndex="0" style="-fx-font-size: 11px;"/>
+        
+        <!-- Fila 1 -->
+        <Label text=".bat:" GridPane.columnIndex="0" GridPane.rowIndex="1" style="-fx-font-size: 11px; -fx-font-weight: bold;"/>
+        <ComboBox fx:id="comboBat" promptText="Seleccionar .bat" GridPane.columnIndex="1" GridPane.rowIndex="1" maxWidth="Infinity" style="-fx-font-size: 11px;"/>
+        
+        <Label text="Icono:" GridPane.columnIndex="2" GridPane.rowIndex="1" style="-fx-font-size: 11px; -fx-font-weight: bold;"/>
+        <ComboBox fx:id="comboIcono" promptText="Seleccionar icono" GridPane.columnIndex="3" GridPane.rowIndex="1" maxWidth="Infinity" style="-fx-font-size: 11px;"/>
+        
+        <!-- Fila 2 -->
+        <Label text="Categoría:" GridPane.columnIndex="0" GridPane.rowIndex="2" style="-fx-font-size: 11px; -fx-font-weight: bold;"/>
+        <ComboBox fx:id="comboCategoriaForm" promptText="Categoría" GridPane.columnIndex="1" GridPane.rowIndex="2" maxWidth="Infinity" style="-fx-font-size: 11px;" editable="true"/>
+
+        <!-- Fila 3: Opciones CheckBox -->
+        <HBox GridPane.columnIndex="0" GridPane.rowIndex="3" GridPane.columnSpan="4" spacing="16" alignment="CENTER_LEFT" style="-fx-padding: 4 0 0 0;">
+            <CheckBox fx:id="checkArgumento" text="Argumento" style="-fx-font-size: 11px;"/>
+            <CheckBox fx:id="checkExcluidoBloqueo" text="Sin bloqueo" style="-fx-font-size: 11px;"/>
+            <CheckBox fx:id="checkRequiereConfirmacion" text="Confirmación" style="-fx-font-size: 11px;"/>
+        </HBox>
+    </GridPane>
+
+    <!-- BARRA DE ESTADO -->
+    <Label fx:id="lblStatus" text="" wrapText="true" style="-fx-font-size: 11px; -fx-text-fill: #64748b; -fx-min-height: 16px;"/>
+
+    <!-- BOTONES DE ACCIÓN -->
+    <HBox spacing="10" alignment="CENTER" style="-fx-padding: 4 0;">
+        <Button fx:id="btnGuardar" styleClass="btn-logs" text="Crear" onAction="#guardar" prefWidth="150" prefHeight="28" style="-fx-font-size: 11px; -fx-font-weight: bold;"/>
+        <Button fx:id="btnEliminar" styleClass="btn-danger" text="Eliminar" onAction="#eliminar" prefWidth="150" prefHeight="28" disable="true" style="-fx-font-size: 11px; -fx-font-weight: bold;"/>
+        <Button fx:id="btnCancelar" styleClass="btn-logs" text="Cancelar" onAction="#cancelar" prefWidth="150" prefHeight="28" style="-fx-font-size: 11px;"/>
+    </HBox>
+
+    <!-- FOOTER -->
+    <HBox styleClass="dev-signature-footer" alignment="CENTER" spacing="6" style="-fx-padding: 6 0 0 0;">
+        <Separator HBox.hgrow="ALWAYS"/>
+        <HBox spacing="4" alignment="CENTER">
+            <Label text="Jesus Carrasquilla y Óscar Romero" style="-fx-font-size: 10px; -fx-opacity: 0.7;"/>
+            <Label text="| MIT License" style="-fx-font-size: 10px; -fx-opacity: 0.5;"/>
+        </HBox>
+        <Separator HBox.hgrow="ALWAYS"/>
+    </HBox>
+</VBox>

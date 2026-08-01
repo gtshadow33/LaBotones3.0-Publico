@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Region?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      stylesheets="@styles.css"
+      styleClass="contenedor"
+      fx:controller="com.labotones.SecondStatges.LogsController"
+      spacing="10"
+      style="-fx-padding: 10;">
+
+    <!-- Barra superior -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Button styleClass="btn-logs" text="← Volver" onAction="#volver" prefWidth="150"/>
+        <Button styleClass="btn-logs" text="⟳ Actualizar" onAction="#actualizar" prefWidth="150"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Label text="📅"/>
+        <DatePicker fx:id="fechaExportPicker" promptText="Todas las fechas" prefWidth="150">
+            <tooltip>
+                <Tooltip text="Deja vacío para exportar todo el log, o elige un día para filtrar"/>
+            </tooltip>
+        </DatePicker>
+        <Button styleClass="btn-logs" text="⬇ Exportar CSV" onAction="#exportarCSV" prefWidth="150"/>
+    </HBox>
+
+    <!-- Panel de búsqueda -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="🔍" styleClass="search-label" style="-fx-font-weight: bold;"/>
+        <TextField fx:id="searchField" 
+                   promptText="Escribe texto a buscar..."
+                   HBox.hgrow="ALWAYS"/>
+        <Button text="🔍 " onAction="#buscarTexto" styleClass="btn-search" prefWidth="80"/>
+        <Button text="⬆ " onAction="#buscarAnterior" styleClass="btn-nav" prefWidth="80"/>
+        <Button text="⬇ " onAction="#buscarSiguiente" styleClass="btn-nav" prefWidth="80"/>
+        <Label fx:id="searchStatus" text="0 resultados" style="-fx-font-size: 12px;"/>
+    </HBox>
+
+    <TextArea fx:id="textArea"
+              editable="false"
+              wrapText="true"
+              VBox.vgrow="ALWAYS"
+              prefHeight="500"/>
+
+    <!-- Firma del desarrollador -->
+    <HBox styleClass="dev-signature-footer" alignment="CENTER" spacing="10">
+        <Separator HBox.hgrow="ALWAYS"/>
+        <HBox spacing="6" alignment="CENTER">
+            <Label styleClass="dev-text" text="Jesus Carrasquilla Garcia y Óscar Romero"/>
+            <Label styleClass="dev-license" text="| MIT License"/>
+        </HBox>
+        <Separator HBox.hgrow="ALWAYS"/>
+    </HBox>
+
+</VBox>
