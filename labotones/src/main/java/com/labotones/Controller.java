@@ -265,7 +265,27 @@ public class Controller {
         return texto != null && !texto.isBlank() && isFormatoValido(texto);
     }
 
+    /**
+     * Carga la lista de nomenclaturas de equipos usada para autocompletar.
+     *
+     * Se busca primero un fichero externo "nomenclaturas.txt" junto al
+     * ejecutable (mismo sitio que botones.json/config.properties), para que
+     * cada despliegue portable pueda editar su propia lista sin tener que
+     * recompilar ni tocar el jar. Si no existe ese fichero externo, se usa
+     * como reserva el recurso interno empaquetado en el jar
+     * (/com/labotones/nomenclaturas.txt), que sirve de lista de ejemplo por
+     * defecto.
+     */
     private List<String> cargarNomenclaturas() {
+        java.io.File externo = new java.io.File("nomenclaturas.txt");
+        if (externo.isFile()) {
+            try (var br = java.nio.file.Files.newBufferedReader(externo.toPath())) {
+                return br.lines().map(String::toUpperCase).toList();
+            } catch (Exception e) {
+                e.printStackTrace();
+                // si el fichero externo falla al leer, se sigue probando con el interno
+            }
+        }
         try (var is = getClass().getResourceAsStream("/com/labotones/nomenclaturas.txt")) {
             if (is == null) return List.of();
             try (var br = new java.io.BufferedReader(new java.io.InputStreamReader(is))) {
