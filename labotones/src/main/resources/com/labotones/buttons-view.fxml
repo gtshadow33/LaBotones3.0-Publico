@@ -88,7 +88,7 @@
         <Separator HBox.hgrow="ALWAYS"/>
         <HBox spacing="4" alignment="CENTER">
             <Label text="Jesus Carrasquilla y Óscar Romero" style="-fx-font-size: 10px; -fx-opacity: 0.7;"/>
-            <Label text="| MIT License" style="-fx-font-size: 10px; -fx-opacity: 0.5;"/>
+            <Label text="| GNU GPL License" style="-fx-font-size: 10px; -fx-opacity: 0.5;"/>
         </HBox>
         <Separator HBox.hgrow="ALWAYS"/>
     </HBox>

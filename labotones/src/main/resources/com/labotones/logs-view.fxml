@@ -54,7 +54,7 @@
         <Separator HBox.hgrow="ALWAYS"/>
         <HBox spacing="6" alignment="CENTER">
             <Label styleClass="dev-text" text="Jesus Carrasquilla Garcia y Óscar Romero"/>
-            <Label styleClass="dev-license" text="| MIT License"/>
+            <Label styleClass="dev-license" text="| GNU GPL License"/>
         </HBox>
         <Separator HBox.hgrow="ALWAYS"/>
     </HBox>
