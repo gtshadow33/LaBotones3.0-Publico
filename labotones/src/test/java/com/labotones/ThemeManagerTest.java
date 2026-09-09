@@ -1,9 +1,11 @@
+
 package com.labotones;
 
 import com.labotones.Class_help.ThemeManager;
 import com.labotones.Class_help.Theme;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class ThemeManagerTest {
@@ -51,8 +53,9 @@ class ThemeManagerTest {
     }
 
     /**
-     * Ciclo completo de temas: LIGHT -> DARK -> DRACULA -> MATRIX -> NORD -> SUNSET -> AZUL -> ALPHA -> LIGHT
-     * (antes: LIGHT -> DARK -> DRACULA -> MATRIX -> LIGHT, con 4 temas)
+     * Ciclo completo de temas:
+     * LIGHT -> DARK -> DRACULA -> MATRIX -> NORD
+     * -> SUNSET -> AZUL -> ALPHA -> LIGHT
      */
     @Test
     void testToggle() {
@@ -90,6 +93,7 @@ class ThemeManagerTest {
 
         // Probar el ciclo completo desde LIGHT
         ThemeManager.setTheme(Theme.LIGHT);
+
         ThemeManager.toggle();
         assertEquals(Theme.DARK, ThemeManager.getCurrentTheme());
 
@@ -120,9 +124,11 @@ class ThemeManagerTest {
 
     @Test
     void testThemeEnumValues() {
-        // Verificar que todos los valores del enum existen (7 temas desde el release de temas nuevos)
+        // Verificar que existen los 8 temas
         Theme[] themes = Theme.values();
-        assertEquals(7, themes.length);
+
+        assertEquals(8, themes.length);
+
         assertTrue(containsTheme(themes, Theme.LIGHT));
         assertTrue(containsTheme(themes, Theme.DARK));
         assertTrue(containsTheme(themes, Theme.DRACULA));
@@ -147,8 +153,9 @@ class ThemeManagerTest {
 
     @Test
     void testFullCycle() {
-        // Probar ciclo completo de temas, mezclando llamadas directas y toggle()
+        // Probar ciclo completo de los 8 temas
         ThemeManager.setTheme(Theme.LIGHT);
+
         assertEquals(Theme.LIGHT, ThemeManager.getCurrentTheme());
 
         ThemeManager.toggle();
@@ -163,15 +170,31 @@ class ThemeManagerTest {
         ThemeManager.toggle();
         assertEquals(Theme.NORD, ThemeManager.getCurrentTheme());
 
-        ThemeManager.setTheme(Theme.LIGHT);
+        ThemeManager.toggle();
+        assertEquals(Theme.SUNSET, ThemeManager.getCurrentTheme());
+
+        ThemeManager.toggle();
+        assertEquals(Theme.AZUL, ThemeManager.getCurrentTheme());
+
+        ThemeManager.toggle();
+        assertEquals(Theme.ALPHA, ThemeManager.getCurrentTheme());
+
+        // Volver al primer tema
+        ThemeManager.toggle();
         assertEquals(Theme.LIGHT, ThemeManager.getCurrentTheme());
     }
 
-    // Método auxiliar para verificar si un tema existe en el array
+    /**
+     * Método auxiliar para verificar si un tema existe en el array.
+     */
     private boolean containsTheme(Theme[] themes, Theme theme) {
         for (Theme t : themes) {
-            if (t == theme) return true;
+            if (t == theme) {
+                return true;
+            }
         }
+
         return false;
     }
 }
+
